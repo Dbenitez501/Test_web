@@ -3,72 +3,54 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Inicio de sesión</title>
+        <title>Administración</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/estilos.css?v=<?php echo(rand()); ?>">
-        <link rel="stylesheet" href="css/soluciones.css?v=<?php echo(rand()); ?>">
+        <link rel="stylesheet" href="../css/estilos.css?v=<?php echo(rand()); ?>">
+        <link rel="stylesheet" href="../css/soluciones.css?v=<?php echo(rand()); ?>">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/20e764b6ee.js" crossorigin="anonymous"></script>
-        <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
 
     </head>
     <body>
 
         <section class="sub-header">
             <nav>
-                <a href="index.php"><img src="img/logo_fime.png"></a>
+                <a href="../controlador.php"><img src="../img/logo_fime.png"></a>
                 <div class="nav-links" id="navLinks">
                     <i class="fas fa-times" onclick="ocultarMenu()"></i>
                     <ul>
-                        <li><a href="index.php">INICIO</a></li>
+                        <li><a href="../controlador.php">INICIO</a></li>
                         <li><a href="https://www.fime.uanl.mx/" target="_blank" rel="noopener noreferrer">FIME</a></li>
-                        <li><a href="vistas/nosotros.php">ACERCA DE</a></li>
+                        <li><a href='../include/logout.php'>CERRAR SESIÓN</a></li>
                     </ul>
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>
             </nav>
-            <h1>CONFERENCIAS</h1>
-            <p>Inscríbete para prepararte en las nuevas tendencias.</p>
+            <h1>Recuperación</h1>
+            <p>Recupera tu contraseña</p>
             
         </section>
+        <section class="registro-usuario">
+            <div class="row row-registro">
+                <div class="registro-col">
+                    <h2 style="color:#fff;">Recupera tu contraseña</h2>
+                    <hr>
+                    <form class="registro-form" action="xx" target="" method="POST" name="x" onsubmit="return validar();">
 
-        <section class="inicio-sesion">
-            <div class="row row-sesion">
-                <div class="sesion-col">
-                    <?php
-                    //Arroja un error si el usuario y/o contraseña están incorrectos
-                    //variable $errorLogin se encuentra en el archivo controlador.php
-                    if(isset($errorLogin)) {
-                    echo '<script>
-                    swal({
-                        title: "Error",
-                        text: "Nombre de usuario y/o Contraseña incorrectos", 
-                        icon: "error",
-                      });
-                    </script>';
-                    }
-                    ?>
-                    <h2 style="color:#fff;">Inicio de Sesión</h2>
-                    <form action="" method="POST" class="sesion-form">
                         <div class="input-container">
-                            <i class="fas fa-user icon"></i>
-                            <input type="text" name="username" placeholder="Usuario">
+                            <h3 for="email">Email</h3>
+                            <input type="text" name="email" id="email" placeholder="@" required>
                         </div>
                         <div class="input-container">
-                            <i class="fas fa-key icon"></i>
-                            <input type="password" name="password" placeholder="Contraseña">
-                        </div>
-                        <div class="input-container">
-                            <input type="submit" value="Ingresar" class="sesion-btn">
-                        </div>
-                        <div class="input-container">
-                            <h4>¿No tienes una cuenta? <a class="link" href="vistas/nuevo_usu.php">Regístrate</a></h4>
+                            <h3 for="conf_email">Confirmar correo</h3>
+                            <input type="text" name="conf_email" id="conf_email" placeholder="@" required>
                         </div>
                         <br>
-                        <div class="input-container">
-                            <h4>¿Olvidaste la contraseña? <a class="link" href="vistas/recuperar_con.php">Recuperar</a></h4>
+
+                        <div class="btn-container">
+                            <input type="submit" name="Recuperar_cont" value="Recuperar" class="registro-btn">
                         </div>
                     </form>
                 </div>
@@ -94,7 +76,7 @@
                 <a href="https://twitter.com/fime_oficial?lang=es" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i>Twitter</a>
                 <a href="https://www.youtube.com/channel/UCfmQiSfgZ5cMDe-kAYplmww/featured" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i>Youtube</a>
             </div>
-            <div class="logo-area"><img src="img/Logos.png" alt=""></div>
+            <div class="logo-area"><img src="../img/Logos.png" alt=""></div>
         </footer>
 
         <script>
@@ -107,5 +89,6 @@
                 navLinks.style.right = "-210px";
             }
         </script>
+
     </body>
 </html>
