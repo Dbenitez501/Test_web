@@ -149,11 +149,11 @@ class Presencial extends DB
     }
 
     public function getCapacidadActual($id) {
-        $consulta = "SELECT cap_actual FROM presencial WHERE id_presencial=:id";
+        $consulta = "SELECT capacidad_actual FROM presencial WHERE id_presencial=:id";
         $consulta = $this->connect()->prepare($consulta);
         $consulta->execute(['id'=>$id]);
         foreach($consulta as $cap) {
-            return $cap['cap_actual'];
+            return $cap['capacidad_actual'];
         }
     }
 
