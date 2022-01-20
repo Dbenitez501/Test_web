@@ -147,6 +147,24 @@ class Presencial extends DB
             return $fecha['fecha_inicio'];
         }
     }
+
+    public function getCapacidadActual($id) {
+        $consulta = "SELECT cap_actual FROM presencial WHERE id_presencial=:id";
+        $consulta = $this->connect()->prepare($consulta);
+        $consulta->execute(['id'=>$id]);
+        foreach($consulta as $cap) {
+            return $cap['cap_actual'];
+        }
+    }
+
+    public function getCapacidadMaxima($id) {
+        $consulta = "SELECT cap_max FROM presencial WHERE id_presencial=:id";
+        $consulta = $this->connect()->prepare($consulta);
+        $consulta->execute(['id'=>$id]);
+        foreach($consulta as $cap) {
+            return $cap['cap_max'];
+        }
+    }
 }
 
 ?>

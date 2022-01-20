@@ -75,6 +75,17 @@ $virtual = new Virtual();
 
         $insertar = "INSERT INTO registros (id_presencial, id_usuario, asistencia) VALUES ('$idConf', '$idUsu', '$asistencia')";
 
+        //Ver si ya se pasó el límite de capacidad máxima de la conferencia en caso de que no se refresque la página
+        $cap_actual = $presencial->getCapacidadActual($idConf);
+        $cap_max = $presencial->getCapacidadMaxima($idConf);
+
+        if($cap_max <= $cap_actual) {
+            echo '<script>
+                alertaWarningMsg("Ya se ocuparon todos los lugares disponibles");
+            </script>';
+            exit;
+        }
+
         //VERIFICA SI YA SE INSCRIBIÓ A ESA CONFERENCIA
         $verificaInscripcion = $db->connect()->prepare("SELECT * FROM registros WHERE id_usuario=:user AND id_presencial=:id");
         $verificaInscripcion->execute(['user'=>$idUsu, 'id'=>$idConf]);
@@ -106,9 +117,9 @@ $virtual = new Virtual();
                 //window.location = "controlador.php";
             </script>';
             exit;
-        }        
-        
+        }
 
+        //Ejecutamos el procedimiento
         $procedure = $db->connect()->prepare('CALL conteo_capacidad_presencial(?)');
         $procedure->bindParam(1, $idConf, PDO::PARAM_INT);
         $procedure->execute();
