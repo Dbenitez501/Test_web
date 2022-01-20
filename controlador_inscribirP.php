@@ -61,7 +61,10 @@ $virtual = new Virtual();
     
     if(!isset($_SESSION['user']))
     {
-        header("location: controlador.php");
+        //header("location: controlador.php");
+        echo '<script>
+                window.location = "controlador.php";
+            </script>';
     } else if(isset($_SESSION['user'])) {
 
         $user->setUser($userSession->getCurrentUser());
