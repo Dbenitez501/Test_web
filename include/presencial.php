@@ -158,11 +158,12 @@ class Presencial extends DB
     }
 
     public function getCapacidadMaxima($id) {
-        $consulta = "SELECT cap_max FROM presencial WHERE id_presencial=:id";
+        $consulta = "SELECT capacidad_max FROM lugar_expo INNER JOIN 
+        presencial on presencial.id_lugar = lugar_expo.id_lugar WHERE id_presencial=:id";
         $consulta = $this->connect()->prepare($consulta);
         $consulta->execute(['id'=>$id]);
         foreach($consulta as $cap) {
-            return $cap['cap_max'];
+            return $cap['capacidad_max'];
         }
     }
 }
