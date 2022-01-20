@@ -1,13 +1,12 @@
 <?php
-include_once 'include/db.php';
 include_once 'include/user_session.php';
 include_once 'include/user.php';
+include_once 'include/db.php';
 include_once 'include/SED.php';
-
-$db = new DB();
 
 $userSession = new UserSession();
 $user = new User();
+$db = new DB();
 
 if(isset($_SESSION['user']))
 {

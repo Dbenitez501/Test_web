@@ -1,3 +1,18 @@
+<?php
+include_once 'include/user_session.php';
+include_once 'include/user.php';
+include_once 'include/presencial.php';
+include_once 'include/virtual.php';
+include_once 'include/db.php';
+
+$userSession = new UserSession();
+$user = new User();
+$db = new DB();
+$presencial = new Presencial();
+$virtual = new Virtual();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,21 +60,7 @@
     </script>
 
     <?php
-    include_once 'include/user_session.php';
-    include_once 'include/presencial.php';
-    include_once 'include/virtual.php';
-    include_once 'include/user.php';
-    include_once 'include/db.php';
-    $db = new DB();
-
-    $presencial = new Presencial();
-    $virtual = new Virtual();
-
-    $userSession = new UserSession();
-    $user = new User();
-
-
-
+    
     if(!isset($_SESSION['user']))
     {
         header("location: controlador.php");
