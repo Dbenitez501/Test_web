@@ -2,10 +2,45 @@
 include_once '../include/db.php';
 include_once '../include/presencial.php';
 include_once '../include/virtual.php';
-
+include_once '../include/user.php';
+include_once '../include/user_session.php';
 $db = new DB();
-$pre = new Presencial();
+$presencial = new Presencial();
 $virtual = new Virtual();
+$userSession = new UserSession();
+$user = new User();
+
+$idUser;
+
+if(isset($_SESSION['user'])) {
+  $user->setUser($userSession->getCurrentUser());
+  $idUser = $user->getIdUsu();
+}
+
+//PARA ELIMINAR REGISTRO
+if(isset($_GET['delV'])) {
+  $id_del = $_GET['delV'];
+
+  $procedure = $db->connect()->prepare('CALL restar_capacidad_virtual(?)');
+  $procedure->bindParam(1, $id_del, PDO::PARAM_INT);
+  $procedure->execute();
+
+  $queryDel = $db->connect()->prepare("DELETE FROM registros WHERE id_registro = :id_del");
+  $queryDel->execute(['id_del'=>$id_del]);
+  header("location: tabla_asistencias.php");
+}
+
+if(isset($_GET['delP'])) {
+  $id_del = $_GET['delP'];
+
+  $procedure = $db->connect()->prepare('CALL restar_capacidad_presencial(?)');
+  $procedure->bindParam(1, $id_del, PDO::PARAM_INT);
+  $procedure->execute();
+
+  $queryDel = $db->connect()->prepare("DELETE FROM registros WHERE id_registro = :id_del");
+  $queryDel->execute(['id_del'=>$id_del]);
+  header("location: tabla_asistencias.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +48,7 @@ $virtual = new Virtual();
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Asistencia</title>
+        <title>Conferencias</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/estilos.css?v=<?php echo(rand()); ?>">
@@ -21,11 +56,7 @@ $virtual = new Virtual();
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/20e764b6ee.js" crossorigin="anonymous"></script>
-
-        <script type="text/javascript" src="../js/tcal.js"></script>
-        <script src="../js/validarCodAsistencia.js"></script>
         <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
-
     </head>
     <body>
 
@@ -37,79 +68,52 @@ $virtual = new Virtual();
                     <ul>
                         <li><a href="../controlador.php">INICIO</a></li>
                         <li><a href="https://www.fime.uanl.mx/" target="_blank" rel="noopener noreferrer">FIME</a></li>
-                        <li><a href='tabla_asistencias.php'>MIS CONFERENCIAS</a></li>
-                        <li><a href='cuenta.php'>MI CUENTA</a></li>
+                        <?php
+                            if(isset($_SESSION['user'])) {
+                            echo "<li><a href='tabla_asistencias.php'>MIS CONFERENCIAS</a></li>";
+                            }
+                        ?>
+                        <?php
+                            if(isset($_SESSION['user'])) {
+                            echo "<li><a href='cuenta.php'>MI CUENTA</a></li>";
+                            }
+                        ?>
                         <li><a href="nosotros.php">ACERCA DE</a></li>
-                        <li><a href='../include/logout.php'>CERRAR SESIÓN</a></li>
+                        <?php
+                            if(isset($_SESSION['user'])) {
+                            echo "<li><a href='../include/logout.php'>CERRAR SESIÓN</a></li>";
+                            } 
+                        ?>
                     </ul>
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>
             </nav>
-            <h1>ASISTENCIA</h1>
+            <h1>CUENTA</h1>
             
         </section>
 
         <section class="registro-usuario">
             <div class="row row-registro">
-                <div class="registro-col">                    
-                    <form class="registro-form" action="<?php
-                    if(isset($_GET['idRegP'])) {
-                        echo '../include/verificaCodPre.php';
-                    } elseif (isset($_GET['idRegV'])) {
-                        echo '../include/verificaCodVirtual.php';
-                    }
-                    ?>" target="" method="POST" name="regAsistencia" onsubmit="return validar();">
-
-                        <h2 style="color:#fff;">Asistencia<br> <h3><?php
-                        if(isset($_GET['idRegP'])) {
-                            $id = $_GET['idRegP'];
-                            echo $pre->getTituloConf($id);
-                        } elseif (isset($_GET['idRegV'])) {
-                            $id = $_GET['idRegV'];
-                            echo $virtual->getTituloConf($id);
-                        }
-                        ?></h3></h2>
-                        <h4>Fecha: <?php
-                        if(isset($_GET['idRegP'])) {
-                            $id = $_GET['idRegP'];
-                            echo $pre->getFechaConf($id);
-                        } elseif (isset($_GET['idRegV'])) {
-                            $id = $_GET['idRegV'];
-                            echo $virtual->getFechaConf($id);
-                        }
-                        ?></h4>
-                        <h4>Hora: <?php
-                        if(isset($_GET['idRegP'])) {
-                            $id = $_GET['idRegP'];
-                            echo $pre->getHoraConf($id);
-                        } elseif (isset($_GET['idRegV'])) {
-                            $id = $_GET['idRegV'];
-                            echo $virtual->getHoraConf($id);
-                        }
-                        ?></h4>
-
-                        <hr>
-                        <input type="hidden" name="id" id="id" value="<?php
-                        if(isset($_GET['idRegP'])) {
-                            $id = $_GET['idRegP'];
-                            echo $id;
-                        } elseif (isset($_GET['idRegV'])) {
-                            $id = $_GET['idRegV'];
-                            echo $id;
-                        }
-                        ?>">
-
+                <div class="registro-col">
+                    <h2 style="color:#fff;">Datos</h2>
+                    <hr>
+                    <form class="registro-form" action="xx" target="" method="POST" name="x" onsubmit="return validar();">
                         <div class="input-container">
-                            <h3 for="code">Código de asistencia:</h3>
-                            <input type="text" name="codigo" id="codigo" placeholder="......">
+                            <h3 for="email">Teléfono</h3>
+                            <input type="text" name="telefono" id="telefono" placeholder="" required>
                         </div>
-                        <div class="input-container input-txtarea-cont">
-                            <h3 for="comentario">Comentario:</h3>
-                            <textarea class="input-textarea" type="textarea" name="comentario" id="comentario" placeholder=""></textarea>
+                        <div class="input-container">
+                            <h3 for="email">Email</h3>
+                            <input type="text" name="email" id="email" placeholder="" required>
+                        </div>
+                        <div class="input-container">
+                            <h3 for="contraseña">Contraseña</h3>
+                            <input type="password" name="contraseña" id="contraseña" placeholder="" required>
                         </div>
                         <br>
+
                         <div class="btn-container">
-                        <input type="submit" name="guardar_asistencia"  value="Guardar" class="registro-btn">
+                            <input type="submit" name="Recuperar_cont" value="Guardar" class="registro-btn">
                         </div>
                     </form>
                 </div>

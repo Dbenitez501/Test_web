@@ -61,6 +61,11 @@ if(isset($_SESSION['user'])) {
                                 echo "<li><a href='tabla_asistencias.php'>MIS CONFERENCIAS</a></li>";
                                 }
                             ?>
+                            <?php
+                            if(isset($_SESSION['user'])) {
+                            echo "<li><a href='cuenta.php'>MI CUENTA</a></li>";
+                            }
+                            ?>
                         <li>
                             <a href="nosotros.php">ACERCA DE</a>
                         </li>

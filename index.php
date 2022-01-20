@@ -53,6 +53,11 @@ $virtual = new Virtual();
                                 echo "<li><a href='vistas/tabla_asistencias.php'>MIS CONFERENCIAS</a></li>";
                                 }
                             ?>
+                         <?php
+                                if(isset($_SESSION['user'])) {
+                                echo "<li><a href='vistas/cuenta.php'>MI CUENTA</a></li>";
+                                }
+                            ?>
                         <li>
                             <a href="vistas/nosotros.php">ACERCA DE</a>
                         </li>
