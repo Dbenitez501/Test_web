@@ -77,7 +77,8 @@ $virtual = new Virtual();
                 <a href="vistas/nosotros.php" class="header-btn">Acerca de nosotros</a>
             </div>
         </section>
-
+        
+        
         <section class="soluciones">
             <h1>Bienvenido/a<h2><?php
                 if(isset($_SESSION['user'])) {

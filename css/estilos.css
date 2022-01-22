@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 .header{
-    min-height: 80vh;
+    min-height: 70vh;
     width: 100%;
     background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(../img/fime1.jpg);
     background-position: center;
@@ -87,6 +87,7 @@ nav img{
     border: 1px solid #fff;
     background: #498B2A;
     transition: 1s;
+    color: #fff;
 }
 
 nav .fas{

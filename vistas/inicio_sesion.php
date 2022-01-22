@@ -33,7 +33,8 @@
             <p>Inscríbete para prepararte en las nuevas tendencias.</p>
             
         </section>
-
+        
+        
         <section class="inicio-sesion">
             <div class="row row-sesion">
                 <div class="sesion-col">
