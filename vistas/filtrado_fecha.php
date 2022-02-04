@@ -86,6 +86,10 @@ $db = new DB();
                 </div>
               
             </div>
+            </div>
+                <div class="boton_nuevo_conferencia_p">
+                <a href="menu_filtrado.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>
         </section>   
 
         <footer>

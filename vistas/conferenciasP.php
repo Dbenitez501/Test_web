@@ -71,7 +71,7 @@ if(isset($_GET['del'])) {
         </section>
 
         <div class="tablas_seccion_conferencias">
-                <h2>Conferencias presenciales</h2>               
+                <h2>Conferencias presenciales</h2>           
                 <div class="boton_nuevo_conferencia_p">
                 <a href="nueva_conf_p.php"><input type="submit" value="Nuevo" class="boton_nuevo"></a>
                 </div>
@@ -118,7 +118,8 @@ if(isset($_GET['del'])) {
                          ?></td>
                         <td data-label="Asistencia"><?php echo $data["codigo_asistencia"];?></td>
                         <td data-label="Estado"><?php echo $pre->getEstado($data['estado']);?></td>
-                        <td data-label="Botones"><a href='mod_conf_p.php?id=<?php echo $id?>'><input type="submit" value="Modificar" class="boton_mod"></a><a href='#' onclick="preguntar(<?php echo $id?>)"><input type="submit" value="Eliminar" id="btnEliminar" class="boton_elim"></a></td>
+                        <td data-label="Botones"><a href='mod_conf_p.php?id=<?php echo $id?>'><input type="submit" value="Modificar" class="boton_mod"></a>
+                        <a href='#' onclick="preguntar(<?php echo $id?>)"><input type="submit" value="Eliminar" id="btnEliminar" class="boton_elim"></a></td>
                     </tr>
                     <?php
                         }
@@ -127,6 +128,9 @@ if(isset($_GET['del'])) {
                     </tbody>         
                 </table>               
                 </div>
+                <div class="boton_nuevo_conferencia_p">
+                <a href="menu_tipo.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>  
         </div>
 
         <footer>

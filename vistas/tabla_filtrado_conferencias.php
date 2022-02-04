@@ -141,6 +141,11 @@ if(isset($_GET["idP"])){
                     </tbody>         
                 </table>               
                 </div>
+                <!--  Enlace mal diseñado para esta seccion, debido al filtrado por fechas
+                <div class="boton_nuevo_conferencia_p">
+                <a href="filtrado_conferencia.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>-->
+                </div>
         </div>
 
         <footer>

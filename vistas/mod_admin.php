@@ -102,8 +102,10 @@ $contraDes = SED::decryption($consulta[1]);
                         </div>
                     </form>
                 </div>
-                
             </div>
+            <div class="boton_nuevo_conferencia_p">
+                <a href="administradores.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>
         </section>
 
         <footer>

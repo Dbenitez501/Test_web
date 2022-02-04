@@ -1,11 +1,12 @@
 *{
+    
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
 .header{
-    min-height: 70vh;
+    min-height: 400px;
     width: 100%;
     background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(../img/fime1.jpg);
     background-position: center;
@@ -19,7 +20,7 @@ nav{
     align-items: center;
 }
 nav img{
-    width: 200px;
+    max-width: 110%;
 }
 .nav-links{
     flex: 1;
@@ -56,11 +57,12 @@ nav img{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -20%);
     text-align: center;
 }
 .text-box h1{
-    font-size: 62px;
+    font-size: 50px;
+    margin: 10px 0 40px;
 }
 .text-box p{
     margin: 10px 0 40px;
@@ -161,10 +163,46 @@ h3{
 }
 
 
-
 @media(max-width: 809px){
+    .prod-col{
+        margin: 20px 0px;
+    }
     .text-box h1{
-        font-size: 20px;
+        font-size: 200%;
+    }
+
+    /*ACOMODO DE CARDS*/
+    .row{
+        flex-direction: column;
+    }
+
+    footer{
+        flex-direction: column;
+    }
+    .contact-info, .icons{
+        margin-bottom: 25px;
+    }
+    .registro-form .input-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .registro-form .input-container h3{
+        text-align: center;
+        width: 100%;
+    }
+    .registro-form input[type="text"], .registro-form input[type="email"], .registro-form input[type="password"] {
+        width: 90%;
+    }
+    .usuario-container{
+        width: 100%;
+    }
+}
+
+@media(max-width: 900px){
+    
+    nav img{
+        max-width: 110%;
     }
     .nav-links ul li{
         display: block;
@@ -202,40 +240,15 @@ h3{
     .nav-links ul li:hover::after{
         width: 100%;
     }
-
-    /*ACOMODO DE CARDS*/
-    .row{
-        flex-direction: column;
-    }
-
-    footer{
-        flex-direction: column;
-    }
-    .contact-info, .icons{
-        margin-bottom: 25px;
-    }
-    .registro-form .input-container {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-    .registro-form .input-container h3{
-        text-align: center;
-        width: 100%;
-    }
-    .registro-form input[type="text"], .registro-form input[type="email"], .registro-form input[type="password"] {
-        width: 90%;
-    }
-    .usuario-container{
-        width: 100%;
-    }
 }
+
 
 
 
 .soluciones{
     width: 85%;
     margin: auto;
+    
     text-align: center;
     padding-top: 50px;
 }
@@ -295,6 +308,13 @@ footer h5 span{
     font-size: 25px;
     cursor: pointer;
 }
+.contact-info a{
+    color: #fff;
+}
+.contact-info a:hover {
+    transition: 0.5s;
+    color: #34A32A;
+}
 .icons a:hover {
     transition: 0.5s;
     color: #34A32A;
@@ -309,7 +329,7 @@ footer h5 span{
 /*SUB HEADER PARA LAS OTRAS PANTALLAS DE LA PÁGINA*/
 
 .sub-header{
-    height: 50vh;
+    height: 300px;
     width: 100%;
     background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(../img/fime1.jpg);
     background-position: center;
@@ -318,7 +338,9 @@ footer h5 span{
     color: #fff;
 }
 .sub-header h1{
-    margin-top: 100px;
+    margin: 10px;
+    font-weight: 30%;
+    font-size: 200%;
 }
 
 /* .header-prod{
@@ -387,7 +409,6 @@ footer h5 span{
 }
 .row-prod{
     flex-wrap: wrap;
-    margin: auto;
 }
 
 .prod-col{
@@ -398,8 +419,7 @@ footer h5 span{
     flex-basis: 31%;
     background: #26713F;
     border-radius: 10px;
-    margin: auto;
-    margin-bottom: 3%;
+    margin: 10px;
     padding: 15px 10px;
     box-sizing: border-box;
     transition: 0.5s;
@@ -416,7 +436,7 @@ footer h5 span{
 }
 .prod-col img{
     width: 50%;
-    border-radius: 25px;
+    border-radius: 15px;
     margin-bottom: 10px;
     background-color: #fff;
     padding: 0px;
@@ -594,7 +614,7 @@ footer h5 span{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex-basis: 31%;
+    flex-basis: 40%;
     background: #26713F;
     border-radius: 10px;
     margin: 15px;
@@ -729,7 +749,7 @@ footer h5 span{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-basis: 50%;
+    flex-basis: 55%;
     background: #26713F;
     border-radius: 10px;
     margin: 15px;
@@ -855,9 +875,23 @@ footer h5 span{
 }
 
 
-/*responsive para la tabla mis conferencias*/
-
+/*responsive para la tabla mis conferencias, header y contenedor de las cartas*/
 @media(max-width: 659px){
+    /*Contenedor de las cartas (index)*/
+    .prod-col{
+        margin: 20px 0px;
+    }
+    /*Texto del header principal*/
+    .text-box h1{
+        font-size: 200%;
+    }
+    .text-box p{
+        font-size: 100%;
+    }
+    nav img{
+        max-width: 80%;
+    }
+
 	.table thead{
 		display: none;
 	}
@@ -895,6 +929,9 @@ footer h5 span{
     }
     .usuario-icon{
         width: 50%;
+    }
+    nav img{
+        max-width: 110%;
     }
 }
 /*TABLA CONFERENCIAS PRESENCIALES*/
@@ -1002,6 +1039,11 @@ footer h5 span{
 /*responsive para la tabla conferencias virtual*/
 
 @media(max-width: 1350px){
+
+    .registro-col{
+        flex-basis: 85%;
+    }
+
 	.table_v thead{
 		display: none;
 	}
@@ -1097,6 +1139,24 @@ footer h5 span{
     color: #1883ba;
     background-color: #ffffff;
 }
+
+.boton_regresar{
+    text-decoration: none;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #319133;
+    border-radius: 6px;
+    border: 2px solid #000000;
+    
+}
+.boton_regresar:hover{
+    color: #000000;
+    background-color: #ffffff;
+}
+
 .boton_nuevo_conferencia_p{
     display: flex;
     justify-content:flex-end;

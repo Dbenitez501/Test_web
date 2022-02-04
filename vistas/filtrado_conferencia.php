@@ -134,7 +134,7 @@ if(isset($_GET['del'])) {
                             </div>
                             <div class="input-container">
                                 <h3 for="conf">Conferencia</h3>
-                                <select class="com-box" name="conf" id="conf" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                                <select class="com-box" name="conf" id="conf" onfocus='this.size=1;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                                     <!-- <option selected="" disabled="">Seleccione una opción</option> -->
                                 </select>
                             </div>
@@ -143,8 +143,11 @@ if(isset($_GET['del'])) {
                                 <input type="submit" id="btn" value="Filtrar" class="sesion-btn">
                             </div>
                 </div>
-              
-            </div>
+                </div>
+                
+                <div class="boton_nuevo_conferencia_p">
+                <a href="menu_filtrado.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>
         </section>        
 
         <footer>

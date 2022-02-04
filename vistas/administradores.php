@@ -128,6 +128,9 @@ if(isset($_GET['del'])) {
                     </tbody>         
                 </table>               
                 </div>
+                <div class="boton_nuevo_conferencia_p">
+                <a href="../menu_admin.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>
         </div>
 
         <footer>

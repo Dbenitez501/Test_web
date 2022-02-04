@@ -26,7 +26,9 @@ if(isset($_GET['del'])) {
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/20e764b6ee.js" crossorigin="anonymous"></script>
-         <!-- searchPanes -->
+        <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
+         
+        <!-- searchPanes -->
          <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.3.0/css/searchPanes.dataTables.min.css">
         <!-- esta rompe la tabla xd -->    
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css"/> 
@@ -113,7 +115,8 @@ if(isset($_GET['del'])) {
                         <td data-label="Capacidad Máxima"><?php echo $data['cap_max'];?></td>
                         <td data-label="Asistencia"><?php echo $data['codigo_asistencia'];?></td>
                         <td data-label="Estado"><?php echo $virtual->getEstado($data['estado']);?></td>
-                        <td data-label="Botones"><a href="mod_conf_v.php?id=<?php echo $id?>"><input type="submit" value="Modificar" class="boton_mod"></a><a href='#' onclick="preguntar(<?php echo $id?>)"><input type="submit" value="Eliminar" id="btnEliminar" class="boton_elim"></a></td>
+                        <td data-label="Botones"><a href="mod_conf_v.php?id=<?php echo $id?>"><input type="submit" value="Modificar" class="boton_mod"></a>
+                        <a href='#' onclick="preguntar(<?php echo $id?>)"><input type="submit" value="Eliminar" id="btnEliminar" class="boton_elim"></a></td>
                     </tr>
                     <?php
                         }
@@ -121,6 +124,9 @@ if(isset($_GET['del'])) {
                     ?>
                     </tbody>            
                 </table>
+                </div>
+                <div class="boton_nuevo_conferencia_v">   
+                <a href="menu_tipo.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
                 </div>
         </div>
 
@@ -154,13 +160,40 @@ if(isset($_GET['del'])) {
             function ocultarMenu(){
                 navLinks.style.right = "-210px";
             }
+            
             function preguntar(id) {
-                if(confirm('¿Seguro que quieres eliminar?')) {
-                window.location.href = "conferenciasV.php?del="+id;
-                }
+                swal({
+                    title: "Confirmación",
+                    text: "¿Seguro que quieres eliminar la conferencia?", 
+                    icon: "warning",
+                    dangerMode: true,
+                    buttons: {
+                        cancel: {
+                            text: "Cancelar",
+                            value: "no",
+                            visible: true,
+                        },
+                        confirm: {
+                            text: "Eliminar",
+                            value: id,
+                        }
+                    },
+                }).then((value)  => {
+                    switch (value) {
+                        case "no":
+                            swal.close();
+                            break;
+                        case id:
+                            window.location.href = "conferenciasV.php?del="+id;
+                            break;
+                        default:
+                            swal("No se eliminó");
+                    }
+                });
             }
         </script>
-         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         
         <!-- jQuery, Popper.js, Bootstrap JS -->
         <script src="../popper/popper.min.js"></script>

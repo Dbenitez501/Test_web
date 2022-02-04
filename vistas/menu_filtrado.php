@@ -63,8 +63,9 @@
                         <a class="link" href="../controlador.php">Regresar</a>
                     </div>
                 </div>
-                
             </div>
+            
+            
         </section>        
 
         <footer>

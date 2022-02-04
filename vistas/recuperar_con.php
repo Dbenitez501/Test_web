@@ -23,7 +23,7 @@
                     <ul>
                         <li><a href="../controlador.php">INICIO</a></li>
                         <li><a href="https://www.fime.uanl.mx/" target="_blank" rel="noopener noreferrer">FIME</a></li>
-                        <li><a href='../include/logout.php'>CERRAR SESIÓN</a></li>
+                        <li><a href="nosotros.php">ACERCA DE</a></li>
                     </ul>
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>

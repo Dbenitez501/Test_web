@@ -94,6 +94,7 @@ $virtual = new Virtual();
                 Estas son las conferencias disponibles
             </h3>
             <br>    
+            <!-- Contenedor de lar tarjetas -->
             <div class="row row-prod">
                 <!--CODIGO PARA GENERAR LAS CONFERENCIAS DISPONIBLES-->
                 <?php
@@ -107,7 +108,7 @@ $virtual = new Virtual();
                     while ($dataV = $queryVirtual->fetch(PDO::FETCH_ASSOC)) {
                         $idV = $dataV["id_virtual"]; 
                 ?>
-
+                <!-- Tarjeta Virual -->
                 <div class="prod-col">                   
                     <h2><?php echo $dataV["titulo"]; ?> <br>
                         <span><?php echo "(" . $dataV["tipo"] . ")";?></span>
@@ -131,7 +132,7 @@ $virtual = new Virtual();
                     while($dataP = $queryPresencial->fetch(PDO::FETCH_ASSOC)) {
                         $idP = $dataP['id_presencial'];
                 ?>
-
+                <!-- Tarjeta Precencial -->
                 <div class="prod-col">                    
                     <h2><?php echo $dataP["titulo"]; ?> <br>
                         <span><?php echo "(" . $dataP["tipo"] . ")";?></span>

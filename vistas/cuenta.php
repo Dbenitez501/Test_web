@@ -4,6 +4,8 @@ include_once '../include/presencial.php';
 include_once '../include/virtual.php';
 include_once '../include/user.php';
 include_once '../include/user_session.php';
+include_once '../include/SED.php';
+
 $db = new DB();
 $presencial = new Presencial();
 $virtual = new Virtual();
@@ -16,31 +18,12 @@ if(isset($_SESSION['user'])) {
   $user->setUser($userSession->getCurrentUser());
   $idUser = $user->getIdUsu();
 }
+if(isset($_SESSION['user'])) {
+    $user->setUser($userSession->getCurrentUser());
+    $password = $user->getPass();
+  }
 
-//PARA ELIMINAR REGISTRO
-if(isset($_GET['delV'])) {
-  $id_del = $_GET['delV'];
-
-  $procedure = $db->connect()->prepare('CALL restar_capacidad_virtual(?)');
-  $procedure->bindParam(1, $id_del, PDO::PARAM_INT);
-  $procedure->execute();
-
-  $queryDel = $db->connect()->prepare("DELETE FROM registros WHERE id_registro = :id_del");
-  $queryDel->execute(['id_del'=>$id_del]);
-  header("location: tabla_asistencias.php");
-}
-
-if(isset($_GET['delP'])) {
-  $id_del = $_GET['delP'];
-
-  $procedure = $db->connect()->prepare('CALL restar_capacidad_presencial(?)');
-  $procedure->bindParam(1, $id_del, PDO::PARAM_INT);
-  $procedure->execute();
-
-  $queryDel = $db->connect()->prepare("DELETE FROM registros WHERE id_registro = :id_del");
-  $queryDel->execute(['id_del'=>$id_del]);
-  header("location: tabla_asistencias.php");
-}
+$contraDes = SED::decryption($password);
 ?>
 
 <!DOCTYPE html>
@@ -97,23 +80,23 @@ if(isset($_GET['delP'])) {
                 <div class="registro-col">
                     <h2 style="color:#fff;">Datos</h2>
                     <hr>
-                    <form class="registro-form" action="xx" target="" method="POST" name="x" onsubmit="return validar();">
+                    <form class="registro-form" action="../include/modificarCuenta.php" target="" method="POST" name="formCuenta" onsubmit="return validar();">
                         <div class="input-container">
                             <h3 for="email">Teléfono</h3>
-                            <input type="text" name="telefono" id="telefono" placeholder="" required>
+                            <input type="text" name="telefono" id="telefono" value="<?php echo $user->getTel();?>" placeholder="" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="email">Email</h3>
-                            <input type="text" name="email" id="email" placeholder="" required>
-                        </div>
+                            <h3 for="contra">Contraseña</h3>
+                            <input type ="password" name="contra" id="contra" value="<?php echo $contraDes ?>" placeholder="*****" required>
+                        </div>  
                         <div class="input-container">
-                            <h3 for="contraseña">Contraseña</h3>
-                            <input type="password" name="contraseña" id="contraseña" placeholder="" required>
-                        </div>
+                            <h3 for="contra">Confirmar contraseña</h3>
+                            <input type ="password" name="contra" id="contra" value="" placeholder="*****" required>
+                        </div>  
                         <br>
 
                         <div class="btn-container">
-                            <input type="submit" name="Recuperar_cont" value="Guardar" class="registro-btn">
+                            <input type="submit" name="Recuperar_cont" value="Modificar" class="registro-btn">
                         </div>
                     </form>
                 </div>

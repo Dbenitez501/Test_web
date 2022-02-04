@@ -18,7 +18,7 @@
 
         <section class="sub-header">
             <nav>
-                <a href="index.php"><img src="img/logo_fime.png"></a>
+                <a href="index.php" class="logo-header"><img src="img/logo_fime.png"></a>
                 <div class="nav-links" id="navLinks">
                     <i class="fas fa-times" onclick="ocultarMenu()"></i>
                     <ul>

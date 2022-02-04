@@ -57,6 +57,8 @@ class User extends DB
             $this->correo = $currentUser['correo'];
             $this->sexo = $currentUser['sexo'];
             $this->tipo = $currentUser['id_tipo'];
+            $this->pass = $currentUser['contra'];
+            $this->tel = $currentUser['telefono'];
             
             if($this->tipo == 1) {
                 $this->telefono = 0;
@@ -95,6 +97,16 @@ class User extends DB
     public function getSexo()
     {
         return $this->sexo;
+    }
+
+    public function getPass()
+    {
+        return $this->pass;
+    }
+
+    public function getTel()
+    {
+        return $this->tel;
     }
 
     /**
