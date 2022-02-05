@@ -31,7 +31,7 @@ $contraDes = SED::decryption($password);
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Conferencias</title>
+        <title>Cuenta</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/estilos.css?v=<?php echo(rand()); ?>">
@@ -40,6 +40,7 @@ $contraDes = SED::decryption($password);
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/20e764b6ee.js" crossorigin="anonymous"></script>
         <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
+        
     </head>
     <body>
 
@@ -80,7 +81,10 @@ $contraDes = SED::decryption($password);
                 <div class="registro-col">
                     <h2 style="color:#fff;">Datos</h2>
                     <hr>
-                    <form class="registro-form" action="../include/modificarCuenta.php" target="" method="POST" name="formCuenta" onsubmit="return validar();">
+                    <form class="registro-form" action="../include/modificarCuenta.php" target="" method="POST" name="formCuenta" onsubmit="return PassConfirmar();">
+                        
+                        <input type="hidden" name="id" id="id" value="<?php echo $idUser?>">
+                        
                         <div class="input-container">
                             <h3 for="email">Teléfono</h3>
                             <input type="text" name="telefono" id="telefono" value="<?php echo $user->getTel();?>" placeholder="" required>
@@ -91,12 +95,12 @@ $contraDes = SED::decryption($password);
                         </div>  
                         <div class="input-container">
                             <h3 for="contra">Confirmar contraseña</h3>
-                            <input type ="password" name="contra" id="contra" value="" placeholder="*****" required>
+                            <input type ="password" name="contraconf" id="contraconf" value="" placeholder="*****" required>
                         </div>  
                         <br>
 
                         <div class="btn-container">
-                            <input type="submit" name="Recuperar_cont" value="Modificar" class="registro-btn">
+                            <input type="submit" name="enviar_cuenta" value="Modificar" class="registro-btn">
                         </div>
                     </form>
                 </div>
@@ -133,6 +137,7 @@ $contraDes = SED::decryption($password);
             }
             function ocultarMenu(){
                 navLinks.style.right = "-210px";
+            }
             }
         </script>
 

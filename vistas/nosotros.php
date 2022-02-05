@@ -78,7 +78,9 @@ if(isset($_SESSION['user'])) {
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>
             </nav>
+            <div class="text-box">
             <h1>Acerca de La FIME</h1>
+            </div>
             
         </section>
 

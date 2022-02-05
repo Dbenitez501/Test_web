@@ -45,7 +45,9 @@ $virtual = new Virtual();
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>
             </nav>
+            <div class="text-box">
             <h1>ASISTENCIA</h1>
+            </div>
             
         </section>
 

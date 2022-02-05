@@ -28,8 +28,10 @@
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>
             </nav>
+            <div class="text-box">
             <h1>Recuperación</h1>
             <p>Recupera tu contraseña</p>
+            </div>
             
         </section>
         <section class="registro-usuario">

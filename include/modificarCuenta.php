@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores</title>
+    <title>Cuenta</title>
     <link rel="stylesheet" href="../css/estilos.css?v=<?php echo(rand()); ?>">
     <link rel="stylesheet" href="../css/soluciones.css?v=<?php echo(rand()); ?>">
     <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
@@ -36,21 +36,29 @@
     </script>
 
     <?php
-    modificarCuenta($_POST['id'], $_POST['nombre'], $_POST['email'], $_POST['telefono'], $_POST['sexo'], $_POST['username'], $_POST['contra'], $_POST['tipo']);
+    modificarCuenta($_POST['id'], $_POST['telefono'], $_POST['contra'], $_POST['contraconf']);
 
-    function modificarCuenta($id, $nombre, $email, $telefono, $sexo, $username, $contra, $tipo)
+    function modificarCuenta($id, $telefono, $contra, $contraconf)
     {
+        // Poner las alertas chidas en esta seccion que diga que no son iguales las contraseñas -->
+        if ($contra !== $contraconf) {
+            echo '<script>
+                alertaFalla("Confirme la contraseña correctamente", "warning");
+                // alert("Confirme la contraseña correctamente");
+                // window.history.go(-1);
+            </script>';
+        }else{
         include_once 'db.php';
         include_once 'SED.php';
         $db = new DB();
-        $update = "UPDATE usuarios SET username=:username, contra=:contra, nombre=:nombre, correo=:correo, telefono=:telefono, sexo=:sexo, id_tipo=:tipo WHERE id_usuario=:id";
+        $update = "UPDATE usuarios SET contra=:contra, telefono=:telefono WHERE id_usuario=:id";
 
         //Encriptamos la contraseña del form para pasarla a la BDD
         $contraEnc = SED::encryption($contra);
 
         //EJECUTA LA CONSULTA
         $query = $db->connect()->prepare($update);
-        $query->execute(['id'=>$id, 'username'=>$username, 'contra'=>$contraEnc, 'nombre'=>$nombre, 'correo'=>$email, 'telefono'=>$telefono, 'sexo'=>$sexo, 'tipo'=>$tipo]);
+        $query->execute(['id'=>$id, 'contra'=>$contraEnc, 'telefono'=>$telefono]);
         if(!$query) {
             echo '<script>
                 alertaFalla("Error al modificar", "warning");
@@ -59,10 +67,12 @@
             </script>';
         } else {
             echo '<script>
-                    alertaCorrecto("Administrador modificado correctamente");
+                    alertaCorrecto("Datos modificados correctamente");
                     // alert("Administrador modificado correctamente");
                     // window.location = "../vistas/administradores.php";
                 </script>';
+        }
+
         }
     }
 

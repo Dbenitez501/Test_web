@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 .header{
-    min-height: 400px;
+    min-height: 300px;
     width: 100%;
     background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(../img/fime1.jpg);
     background-position: center;
@@ -61,12 +61,12 @@ nav img{
     text-align: center;
 }
 .text-box h1{
-    font-size: 50px;
-    margin: 10px 0 40px;
+    font-size: 40px;
+    margin: 0px;
 }
 .text-box p{
-    margin: 10px 0 40px;
-    font-size: 14px;
+    margin: 0px 0 40px;
+    font-size: 15px;
     color: #fff;
 }
 .text-box span{
@@ -329,20 +329,14 @@ footer h5 span{
 /*SUB HEADER PARA LAS OTRAS PANTALLAS DE LA PÁGINA*/
 
 .sub-header{
-    height: 300px;
+    min-height: 280px;
     width: 100%;
     background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(../img/fime1.jpg);
     background-position: center;
     background-size: cover;
-    text-align: center;
-    color: #fff;
+    position: relative;
 }
-.sub-header h1{
-    margin: 10px;
-    font-weight: 30%;
-    font-size: 200%;
-}
-
+    
 /* .header-prod{
     background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(../img/prod-header.jpg);
 }

@@ -44,8 +44,10 @@ $consulta = $cons->consultarVir($_GET['id']);
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>
             </nav>
+            <div class="text-box">
             <h1>Administración</h1>
             <p>Panel para administradores</p>
+            </div>
             
         </section>
 

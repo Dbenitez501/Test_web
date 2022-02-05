@@ -28,8 +28,10 @@
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>
             </nav>
+            <div class="text-box">
             <h1>CONFERENCIAS</h1>
             <p>Inscríbete para prepararte en las nuevas tendencias.</p>
+            </div>
             
         </section>
 
