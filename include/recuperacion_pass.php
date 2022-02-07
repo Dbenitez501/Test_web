@@ -80,12 +80,6 @@
                     alertaCorrecto("Se envio tu contraseña a tu correo proporcionado");
                 </script>';
             }
-
-            
-            //Encriptamos la contraseña del form para pasarla a la BDD
-            //$contraDes = SED::decryption($query);
-            
-              //      echo '<script>   alert($query)  </script>';
         }
 
         }
