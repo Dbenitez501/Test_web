@@ -73,7 +73,7 @@
                         </div>
                         <br>
                         <div class="input-container">
-                            <h4>¿Olvidaste la contraseña? <a class="link" href="vistas/recuperar_con.php">Recuperar</a></h4>
+                            <h4>¿Olvidaste la contraseña? <a class="link" href="vistas/recuperación_pass.php">Recuperar</a></h4>
                         </div>
                     </form>
                 </div>

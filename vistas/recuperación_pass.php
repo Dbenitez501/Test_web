@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Administración</title>
+        <title>Recuperación Contraseña</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/estilos.css?v=<?php echo(rand()); ?>">
@@ -39,11 +39,12 @@
                 <div class="registro-col">
                     <h2 style="color:#fff;">Recupera tu contraseña</h2>
                     <hr>
-                    <form class="registro-form" action="xx" target="" method="POST" name="x" onsubmit="return validar();">
+                    
+                    <form class="registro-form" action="../include/recuperacion_pass.php" target="" method="POST" name="x">
 
                         <div class="input-container">
                             <h3 for="email">Email</h3>
-                            <input type="text" name="email" id="email" placeholder="@" required>
+                            <input type="email" name="email" id="email" placeholder="@" required>
                         </div>
                        <!--  <div class="input-container">
                             <h3 for="conf_email">Confirmar correo</h3>
@@ -55,6 +56,8 @@
                             <input type="submit" name="Recuperar_cont" value="Recuperar" class="registro-btn">
                         </div>
                     </form>
+
+
                 </div>
                 
             </div>
