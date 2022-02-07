@@ -44,10 +44,16 @@
         if ($contra !== $contraconf) {
             echo '<script>
                 alertaFalla("Confirme la contraseña correctamente", "warning");
-                // alert("Confirme la contraseña correctamente");
-                // window.history.go(-1);
             </script>';
-        }else{
+        }else if($contra==""||$telefono==""||$contraconf=""){
+            echo '<script>
+            alertaFalla("Complete los campos correctamente", "warning");
+        </script>';
+        }else if(strlen ($telefono)!==10){
+            echo '<script>
+            alertaFalla("El teléfono debe de contener 10 digitos", "warning");
+        </script>';
+        }else {
         include_once 'db.php';
         include_once 'SED.php';
         $db = new DB();

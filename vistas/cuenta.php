@@ -41,6 +41,11 @@ $contraDes = SED::decryption($password);
         <script src="https://kit.fontawesome.com/20e764b6ee.js" crossorigin="anonymous"></script>
         <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
         
+
+        <!-- Funcion que manda a llamar que los campos son obligatorios dentro del formulario -->
+       <!--   <script type="text/javascript" src="../js/validaAlumno.js"></script>-->
+
+        
     </head>
     <body>
 
@@ -81,7 +86,8 @@ $contraDes = SED::decryption($password);
                 <div class="registro-col">
                     <h2 style="color:#fff;">Datos</h2>
                     <hr>
-                    <form class="registro-form" action="../include/modificarCuenta.php" target="" method="POST" name="formCuenta" onsubmit="return PassConfirmar();">
+                    <!-- onsubmit="return validar2(); en el form en dado caso que se ocupe-->
+                    <form class="registro-form" action="../include/modificarCuenta.php" target="" method="POST" name="formCuenta">
                         
                         <input type="hidden" name="id" id="id" value="<?php echo $idUser?>">
                         

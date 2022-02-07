@@ -45,10 +45,10 @@
                             <h3 for="email">Email</h3>
                             <input type="text" name="email" id="email" placeholder="@" required>
                         </div>
-                        <div class="input-container">
+                       <!--  <div class="input-container">
                             <h3 for="conf_email">Confirmar correo</h3>
                             <input type="text" name="conf_email" id="conf_email" placeholder="@" required>
-                        </div>
+                        </div> -->
                         <br>
 
                         <div class="btn-container">

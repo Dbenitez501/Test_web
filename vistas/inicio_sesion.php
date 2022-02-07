@@ -48,7 +48,10 @@
                         title: "Error",
                         text: "Nombre de usuario y/o Contraseña incorrectos", 
                         icon: "error",
-                      });
+                        button: "Ok",
+                    }).then((value)  => {
+                        window.history.go(-1);
+                    });
                     </script>';
                     }
                     ?>

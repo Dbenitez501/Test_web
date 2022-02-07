@@ -63,3 +63,33 @@ function validar()
         return false;
     }
 }
+
+//Seccion de Cuenta
+function validar2() 
+{
+    var telefono, contra, contra2;
+    
+    telefono = document.getElementById("telefono").value;
+    contra = document.getElementById("contra").value;
+    contra2 = document.getElementById("contraconf").value;
+
+    if(telefono === "" || contra === "" || contra2 === "") {
+        alert("Todos los campos son obligatorios");
+        return false;
+    }
+    else if(telefono.length > 10) {
+        alert("El teléfono solo es de 10 dígitos");
+        return false;
+    }
+    else if(contra.length > 40) {
+        alert("La contraseña es demasiado larga");
+        return false;
+    }
+    else if(isNaN(telefono)) {
+        alert("El teléfono contiene caracteres inválidos");
+        return false;
+    }else if (contra!==contra2) {
+        alert("Las contraseñas no son iguales");
+        return false;
+    }
+}
