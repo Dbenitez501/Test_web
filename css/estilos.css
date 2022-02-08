@@ -420,7 +420,7 @@ footer h5 span{
     text-align: center;
 }
 .prod-col:hover{    
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     box-shadow: 10px 12px 16px black;
     background: #498B2A;
 }
@@ -926,6 +926,30 @@ footer h5 span{
     }
     nav img{
         max-width: 110%;
+    }
+    .registro-form input[type="text"], .registro-form input[type="email"], .registro-form input[type="password"] {
+        width: 100%;
+    }
+}
+
+@media(min-width: 1700px){
+    .text-box{
+        width: 50%;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        text-align: center;
+    }
+    .text-box h1{
+        font-size: 40px;
+        margin: 0px;
+    }
+    .text-box p{
+        margin: 0px 0 40px;
+        font-size: 15px;
+        color: #fff;
     }
 }
 /*TABLA CONFERENCIAS PRESENCIALES*/

@@ -87,6 +87,9 @@
                 </div>
                 
             </div>
+            <div class="boton_nuevo_conferencia_p">
+                <a href="nuevo_usu.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>  
         </section>
 
         <footer>
