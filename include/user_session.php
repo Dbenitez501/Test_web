@@ -36,6 +36,17 @@ class UserSession
         session_unset();
         session_destroy();
     }
+
+    public function administrador(){
+        if(!isset($_SESSION['user'])){
+            header("Location: controlador.php");
+        }else{
+            $tipo = $user->getTipo();
+            if (!$tipo == "Administrador" || !$tipo == "Auxiliar"){
+            header("Location: controlador.php");
+        }
+        }
+    }
 }
 
 ?>

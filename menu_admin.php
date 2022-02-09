@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -115,3 +117,19 @@
 
     </body>
 </html>
+
+
+<?php
+    include_once 'include/user.php';
+    $user = new User();
+    $user -> administrador();
+
+    /*if(!isset($_SESSION['user'])){
+        header("Location: controlador.php");
+        }else{
+        $tipo = $user->getTipo();
+        if (!$tipo == "Administrador" || !$tipo == "Auxiliar"){
+        header("Location: controlador.php");
+            }
+    }     */
+?>

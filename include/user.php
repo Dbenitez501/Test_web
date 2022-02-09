@@ -138,6 +138,47 @@ class User extends DB
     {
         return $this->telefono;
     }
+//Ver si me deja usarla en el menu_admin y menu_auxiliar  .php
+    public function administrador() {
+
+        if(!isset($_SESSION['user'])){
+            echo '<script>
+                    window.location = "controlador.php";
+                </script>';
+        }   else {
+            $user = new User();
+            $tipo = $user->getTipo();
+            if($tipo == "Administrador" || $tipo == "Auxiliar"){
+                echo '<script>
+                    window.location = "menu_admin.php";
+                </script>'; 
+            }else{
+            }
+        }
+        }
+    
+    //Ver si jala en todos los menus de los administradores
+    public function administrador2() {
+        
+        if(!isset($_SESSION['user']))
+        {
+            echo '<script>
+                    window.location = "../controlador.php";
+                </script>';
+        } else if(isset($_SESSION['user'])) {
+        
+            if($tipo == "Administrador" || $tipo == "Auxiliar"){
+                
+            }else{
+                echo '<script>
+                    window.location = "../controlador.php";
+                </script>';
+            }
+        }
+    }
+    
+       
+        
 }
 
 ?>
