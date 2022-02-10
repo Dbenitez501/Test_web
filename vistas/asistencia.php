@@ -6,6 +6,30 @@ include_once '../include/virtual.php';
 $db = new DB();
 $pre = new Presencial();
 $virtual = new Virtual();
+
+include_once '../include/user_session.php';
+include_once '../include/user.php';
+
+$userSession = new UserSession();
+$user = new User();
+
+    if(!isset($_SESSION['user']))
+    {
+    echo '<script>
+            window.location = "../controlador.php";
+        </script>';
+    } else if(isset($_SESSION['user'])) {
+
+    $user->setUser($userSession->getCurrentUser());
+    $tipo = $user->getTipo();
+    if($tipo == "Docente" || $tipo == "Estudiante" ||  $tipo == "Externo"){
+        
+    }else{
+        echo '<script>
+            window.location = "../controlador.php";
+        </script>';
+    }
+}
 ?>
 
 <!DOCTYPE html>

@@ -41,6 +41,24 @@ if(isset($_GET['delP'])) {
   $queryDel->execute(['id_del'=>$id_del]);
   header("location: tabla_asistencias.php");
 }
+
+    if(!isset($_SESSION['user']))
+    {
+    echo '<script>
+            window.location = "../controlador.php";
+        </script>';
+    } else if(isset($_SESSION['user'])) {
+
+    $user->setUser($userSession->getCurrentUser());
+    $tipo = $user->getTipo();
+    if($tipo == "Docente" || $tipo == "Estudiante" ||  $tipo == "Externo"){
+        
+    }else{
+        echo '<script>
+            window.location = "../controlador.php";
+        </script>';
+    }
+}
 ?>
 
 <!DOCTYPE html>

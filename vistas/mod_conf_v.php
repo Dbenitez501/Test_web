@@ -8,6 +8,30 @@ $cons = new ConsultaVir();
 
 $consulta = $cons->consultarVir($_GET['id']);
 
+include_once '../include/user_session.php';
+include_once '../include/user.php';
+
+$userSession = new UserSession();
+$user = new User();
+
+    if(!isset($_SESSION['user']))
+    {
+    echo '<script>
+            window.location = "../controlador.php";
+        </script>';
+    } else if(isset($_SESSION['user'])) {
+
+    $user->setUser($userSession->getCurrentUser());
+    $tipo = $user->getTipo();
+    if($tipo == "Administrador" || $tipo == "Auxiliar"){
+        
+    }else{
+        echo '<script>
+            window.location = "../controlador.php";
+        </script>';
+    }
+}
+
 ?>
 
 <!DOCTYPE html>

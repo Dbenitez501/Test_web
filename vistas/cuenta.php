@@ -1,4 +1,6 @@
 <?php
+
+
 include_once '../include/db.php';
 include_once '../include/presencial.php';
 include_once '../include/virtual.php';
@@ -24,6 +26,25 @@ if(isset($_SESSION['user'])) {
   }
 
 $contraDes = SED::decryption($password);
+
+    if(!isset($_SESSION['user']))
+    {
+    echo '<script>
+            window.location = "../controlador.php";
+        </script>';
+    } else if(isset($_SESSION['user'])) {
+
+    $user->setUser($userSession->getCurrentUser());
+    $tipo = $user->getTipo();
+    if($tipo == "Docente" || $tipo == "Estudiante" ||  $tipo == "Externo"){
+        
+    }else{
+        echo '<script>
+            window.location = "../controlador.php";
+        </script>';
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +97,9 @@ $contraDes = SED::decryption($password);
                 </div>
                 <i class="fas fa-bars" onclick="mostrarMenu()"></i>
             </nav>
+            <div class="text-box">
             <h1>CUENTA</h1>
+            </div>
             
         </section>
 
