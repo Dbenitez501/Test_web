@@ -106,7 +106,7 @@ $db = new DB();
                 </div>
                 
             </div>
-                <div class="boton_nuevo_conferencia_p">
+                <div class="div_regresar">
                 <a href="conferenciasP.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
                 </div>
                 </div>

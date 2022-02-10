@@ -68,8 +68,10 @@
                         </div>
                     </form>
                 </div>
-                
             </div>
+            <div class="div_regresar">
+                <a href="admin_lugares.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>
         </section>
 
         <footer>

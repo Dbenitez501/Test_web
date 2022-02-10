@@ -729,13 +729,11 @@ footer h5 span{
 .registro-usuario{
     width: 90%;
     margin: auto;
-    padding-top: 80px;
     padding-bottom: 50px;
 }
 
 .row-registro{
     justify-content: center;
-    margin-bottom: 3%;
 }
 
 .registro-col{
@@ -1181,6 +1179,11 @@ footer h5 span{
     align-items: flex-start;
     padding-top: 10px;
     padding-right: 2%;
+}
+.div_regresar{
+    display: flex;
+    justify-content:center;
+    align-items: flex-start;
 }
 
 .boton_nuevo_conferencia_v{

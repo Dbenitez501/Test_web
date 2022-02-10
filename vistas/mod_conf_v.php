@@ -127,7 +127,7 @@ $consulta = $cons->consultarVir($_GET['id']);
                 
             </div>
 
-            <div class="boton_nuevo_conferencia_p">
+            <div class="div_regresar">
                 <a href="conferenciasV.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
                 </div>
         </section>
