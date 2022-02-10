@@ -20,7 +20,7 @@ $estadoLugar = $cons->consultarEstadoLugar($_GET['id']);
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/estilos.css?v=<?php echo(rand()); ?>">
-        <link rel="stylesheet" href="../css/soluciones.css?v=<?php echo(rand()); ?>">
+        
         <link rel="stylesheet" type="text/css" href="../css/tcal.css?v=<?php echo(rand()); ?>" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
