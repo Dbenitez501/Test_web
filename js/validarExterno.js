@@ -14,7 +14,7 @@ function validar()
     expresion = /\w+@+\w+\.+[a-z]/;
 
     if(nombre === "" || email === "" || username === "" || contra === "") {
-        alert("Todos los campos son obligatorios, excepto el Teléfono");
+        alert("Todos los campos son obligatorios");
         return false;
     } 
     else if(nombre.length > 250) {

@@ -798,7 +798,7 @@ footer h5 span{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-right: 30%;
+    margin-right: 20%;
     width: 80%;
 }
 .radio-btn label{
@@ -818,7 +818,8 @@ footer h5 span{
     font-size: 13px;
     background: transparent;
     position: relative;
-    cursor: pointer;    
+    cursor: pointer;
+    margin-top: 10px;   
     margin-bottom: 10px;
     color: #000;
     background-color: #fff;

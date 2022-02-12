@@ -47,6 +47,7 @@
     $username   = $_POST['username'];
     $contra     = $_POST['contra'];
     $sexo;
+    $pais     = $_POST['paises'];
     $telefono;
     $tipo = 2;
 
@@ -64,8 +65,8 @@
     }
 
     //Consulta para insertar los datos del Docente
-    $insertar = "INSERT INTO usuarios (username, contra, nombre, matricula, correo, telefono, sexo, id_tipo) VALUES
-    ('$username', '$passCifrada', '$nombre', '$numero_emp', '$email', '$telefono', '$sexo', '$tipo')";
+    $insertar = "INSERT INTO usuarios (username, contra, nombre, matricula, correo, telefono, sexo, pais, id_tipo) VALUES
+    ('$username', '$passCifrada', '$nombre', '$numero_emp', '$email', '$telefono', '$sexo', '$pais','$tipo')";
 
     //VERIFICA SI YA EXISTE EL USERNAME
     $verificarUsuario = $db->connect()->prepare("SELECT * FROM usuarios WHERE username = :user");
@@ -73,9 +74,7 @@
 
     if($verificarUsuario->rowCount() > 0) {
         echo '<script>
-            alertaFalla("El usuario ya está registrado", "warning");
-            // alert("El usuario ya está registrado");
-            // window.history.go(-1);
+            alertaFalla("El nombre de usuario ya está registrado. Favor de escribir uno distinto", "warning");
         </script>';
         exit;
     }
@@ -86,9 +85,7 @@
 
     if($verificarCorreo->rowCount() > 0) {
         echo '<script>
-            alertaFalla("El correo ya está registrado", "warning");
-            // alert("El correo ya está registrado");
-            // window.history.go(-1);
+            alertaFalla("El correo ingresado ya está registrado", "warning");
         </script>';
         exit;
     }
@@ -99,9 +96,7 @@
 
     if($verificarNumEmp->rowCount() > 0) {
         echo '<script>
-            alertaFalla("El número de empleado ya existe", "warning");
-            // alert("El número de empleado ya existe");
-            // window.history.go(-1);
+            alertaFalla("El número de empleado ya existe. Favor de comprobarlo", "warning");
         </script>';
         exit;
     }

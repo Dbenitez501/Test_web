@@ -1,6 +1,6 @@
 function validar() 
 {
-    var nombre, matricula, carrera, email, telefono, sexo, username, contra, expresion;
+    var nombre, matricula, carrera, email, telefono, sexo, username, contra, expresion_mail;
     var s = false;
     
     nombre = document.getElementById("nombre").value;
@@ -9,11 +9,12 @@ function validar()
     email = document.getElementById("email").value;
     telefono = document.getElementById("telefono").value;
     sexo = document.formAlumno.sexo;
+    pais = document.getElementById("paises").value;
     username = document.getElementById("username").value;
     contra = document.getElementById("contra").value;
 
     //Formato para los correos
-    expresion = /\w+@+\w+\.+[a-z]/;
+    expresion_mail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
     if(nombre === "" || matricula === "" || carrera === "" || email === "" || username === "" || contra === "") {
         alert("Todos los campos son obligatorios, excepto el Teléfono");
@@ -35,7 +36,7 @@ function validar()
         alert("El email es muy largo");
         return false;
     }
-    else if(!expresion.test(email)) {
+    else if(!expresion_mail.test(email)) {
         alert("El email no es válido");
         return false;
     }
