@@ -43,7 +43,7 @@
 
                         <div class="input-container">
                             <h3 for="email">Email</h3>
-                            <input type="email" name="email" id="email" placeholder="@" required>
+                            <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required>
                         </div>
                        <!--  <div class="input-container">
                             <h3 for="conf_email">Confirmar correo</h3>
@@ -60,7 +60,7 @@
                 </div>
                 
             </div>
-            <div class="boton_nuevo_conferencia_p">
+            <div class="div_regresar">
                 <a href="../controlador.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
                 </div>  
         </section>

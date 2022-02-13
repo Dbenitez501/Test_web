@@ -126,11 +126,11 @@ $user = new User();
 
                         <div class="input-container">
                             <h3 for="code">Código de asistencia:</h3>
-                            <input type="text" name="codigo" id="codigo" placeholder="......">
+                            <input type="text" name="codigo" id="codigo" placeholder="......" required>
                         </div>
                         <div class="input-container input-txtarea-cont">
                             <h3 for="comentario">Comentario:</h3>
-                            <textarea class="input-textarea" type="textarea" name="comentario" id="comentario" placeholder=""></textarea>
+                            <textarea class="input-textarea" type="textarea" name="comentario" id="comentario" placeholder="¿Qué te pareció?" required></textarea>
                         </div>
                         <br>
                         <div class="btn-container">
@@ -140,6 +140,9 @@ $user = new User();
                 </div>
                 
             </div>
+            <div class="div_regresar">
+                <a href="tabla_asistencias.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>  
         </section>
 
         <footer>

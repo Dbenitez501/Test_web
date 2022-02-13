@@ -115,15 +115,15 @@ $contraDes = SED::decryption($password);
                         
                         <div class="input-container">
                             <h3 for="email">Teléfono</h3>
-                            <input type="text" name="telefono" id="telefono" value="<?php echo $user->getTel();?>" placeholder="" required>
+                            <input type="text" name="telefono" id="telefono" placeholder="1234567890 (10 Digitos)" value="<?php echo $user->getTel();?>" pattern="[0-9]{10}" required title="Sólo se aceptan dígitos (10 Dígitos necesarios)">
                         </div>
                         <div class="input-container">
                             <h3 for="contra">Contraseña</h3>
-                            <input type ="password" name="contra" id="contra" value="<?php echo $contraDes ?>" placeholder="*****" required>
+                            <input type ="password" name="contra" id="contra" value="<?php echo $contraDes ?>" placeholder="******* (Mínimo 7 caracteres)" required minlength="7">
                         </div>  
                         <div class="input-container">
                             <h3 for="contra">Confirmar contraseña</h3>
-                            <input type ="password" name="contraconf" id="contraconf" value="" placeholder="*****" required>
+                            <input type ="password" name="contraconf" id="contraconf" value="" placeholder="******* (Mínimo 7 caracteres)" required minlength="7">
                         </div>  
                         <br>
 
@@ -132,7 +132,6 @@ $contraDes = SED::decryption($password);
                         </div>
                     </form>
                 </div>
-                
             </div>
         </section>
 
@@ -166,7 +165,7 @@ $contraDes = SED::decryption($password);
             function ocultarMenu(){
                 navLinks.style.right = "-210px";
             }
-            }
+            
         </script>
 
     </body>

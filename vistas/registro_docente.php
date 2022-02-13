@@ -46,19 +46,19 @@
                         ?>
                         <div class="input-container">
                             <h3 for="nombre">Nombre completo:</h3>
-                            <input type="text" name="nombre" id="nombre" placeholder="Nombre(s) y Apellido(s)" required pattern="[A-Z a-z]+">
+                            <input type="text" name="nombre" id="nombre" placeholder="Nombre(s) y Apellido(s)" required pattern="^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Sólo se aceptan letras">
                         </div>
                         <div class="input-container">
                             <h3 for="numero_emp">Número de empleado:</h3>
-                            <input type="text" name="numero_emp" id="numero_emp" placeholder="1234567 (7 Dígitos)" required pattern="[0-9]{7}">
+                            <input type="text" name="numero_emp" id="numero_emp" placeholder="1234567 (7 Dígitos)" required pattern="[0-9]{7}" title="Sólo se aceptan dígitos (7 Dígitos necesarios)">
                         </div>
                         <div class="input-container">
                             <h3 for="email">Email:</h3>
-                            <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required>
+                            <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required title="Correo invalido. Ejemplo: ejemplo@gmail.com">
                         </div>
                         <div class="input-container">
                             <h3 for="telefono">Teléfono:</h3>
-                            <input type ="text" name="telefono" id="telefono" placeholder="1234567890 (10 Digitos)" pattern="[0-9]{10}">
+                            <input type ="text" name="telefono" id="telefono" placeholder="1234567890 (10 Digitos)" pattern="[0-9]{10}" title="Sólo se aceptan dígitos (10 Dígitos necesarios)">
                         </div>
                         <div class="input-container">
                             <h3 for="sexo">Género:</h3>
@@ -74,7 +74,7 @@
                         <div class="input-container">
                             <h3 for="pais">País:</h3>
                             <select class="com-box" name="paises" id="paises">
-                                <option value="Elegir" id="Elegir">Seleccione su país</option>
+                                <option value="Elegir" id="Elegir">País de origen</option>
                                 <option value="Afganistán" id="AF">Afganistán</option>
                                 <option value="Albania" id="AL">Albania</option>
                                 <option value="Alemania" id="DE">Alemania</option>
@@ -321,11 +321,11 @@
                         <!--  -->
                         <div class="input-container">
                             <h3 for="username">Usuario:</h3>
-                            <input type ="text" name="username" id="username" placeholder="Inicio de sesión (Mínimo 7 caracteres)" required>
+                            <input type ="text" name="username" id="username" placeholder="Inicio de sesión (Mínimo 7 caracteres)" required minlength="7">
                         </div>
                         <div class="input-container">
                             <h3 for="contra">Contraseña:</h3>
-                            <input type ="password" name="contra" id="contra" placeholder="******* (Mínimo 7 caracteres)" required>
+                            <input type ="password" name="contra" id="contra" placeholder="******* (Mínimo 7 caracteres)" required minlength="7">
                         </div>
 
 

@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/20e764b6ee.js" crossorigin="anonymous"></script>
-        <script src="../js/validarAlumno.js"></script>
+        <script src="../js/validaAlumno.js"></script>
 
     </head>
     <body>
@@ -46,11 +46,11 @@
                         ?>
                         <div class="input-container">
                             <h3 for="nombre">Nombre completo:</h3>
-                            <input type="text" name="nombre" id="nombre" placeholder="Nombre(s) y Apellido(s)" required pattern="[A-Z a-z]+">
+                            <input type="text" name="nombre" id="nombre" placeholder="Nombre(s) y Apellido(s)" required pattern="^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Sólo se aceptan letras">
                         </div>
                         <div class="input-container">
                             <h3 for="mat">Matrícula:</h3>
-                            <input type="text" name="mat" id="mat" placeholder="1234567 (7 Dígitos)" pattern="[0-9]{7}">
+                            <input type="text" name="mat" id="mat" placeholder="1234567 (7 Dígitos)" required pattern="[0-9]{7}" title="Sólo se aceptan dígitos (7 Dígitos necesarios)">
                         </div>
                         <!--  
                             <div class="input-container">
@@ -60,21 +60,31 @@
                         -->
                         <div class="input-container">
                             <h3 for="carreras">Carrera:</h3> <!-- aqui carrera -->
-                            <select class="com-box" name="carreras" id="carreras">
+                            <select class="com-box" name="carreras" id="carreras" required>
                                 <option value="Elegir" id="Elegir">Seleccione su carrera</option>
                                 <option value="IAS" id="IAS">IAS</option>
+                                <option value="IA" id="IA">IA</option>
+                                <option value="IB" id="IB">IB</option>
+                                <option value="IEA" id="IEA">IEA</option>
+                                <option value="IEC" id="IEC">IEC</option>
+                                <option value="IMA" id="IMA">IMA</option>
+                                <option value="IME" id="IME">IME</option>
+                                <option value="IMF" id="IMF">IMF</option>
+                                <option value="IMT" id="IMT">IMT</option>
+                                <option value="IMT" id="IMT">IMTC</option>
                                 <option value="ITS" id="ITS">ITS</option>
+                                <option value="Otro" id="Otro">Otro</option>
                             </select>
                         </div>
 
                         <div class="input-container">
                             <h3 for="email">Email:</h3>
-                            <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required>
+                            <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required title="Correo invalido. Ejemplo: ejemplo@gmail.com">
                         </div>
 
                         <div class="input-container">
                             <h3 for="telefono">Teléfono:</h3>
-                            <input type ="text" name="telefono" id="telefono" placeholder="1234567890 (10 Digitos)" pattern="[0-9]{10}">
+                            <input type ="text" name="telefono" id="telefono" placeholder="1234567890 (10 Digitos)" pattern="[0-9]{10}" required title="Sólo se aceptan dígitos (10 Dígitos necesarios)">
                         </div>
                         
                         <div class="input-container">
@@ -91,8 +101,8 @@
                         
                         <div class="input-container">
                             <h3 for="pais">País:</h3>
-                            <select class="com-box" name="paises" id="paises">
-                                <option value="Elegir" id="Elegir">Seleccione su país</option>
+                            <select class="com-box" name="paises" id="paises" required>
+                                <option value="Elegir" id="Elegir">País de origen</option>
                                 <option value="Afganistán" id="AF">Afganistán</option>
                                 <option value="Albania" id="AL">Albania</option>
                                 <option value="Alemania" id="DE">Alemania</option>
@@ -340,12 +350,12 @@
                         <!--  -->
                         <div class="input-container">
                             <h3 for="username">Usuario:</h3>
-                            <input type ="text" name="username" id="username" placeholder="Inicio de sesión (Mínimo 7 caracteres)" required>
+                            <input type ="text" name="username" id="username" placeholder="Inicio de sesión (Mínimo 7 caracteres)" required minlength="7">
                         </div>
 
                         <div class="input-container">
                             <h3 for="contra">Contraseña:</h3>
-                            <input type ="password" name="contra" id="contra" placeholder="******* (Mínimo 7 caracteres)" required>
+                            <input type ="password" name="contra" id="contra" placeholder="******* (Mínimo 7 caracteres)" required minlength="7">
                         </div>
 
 

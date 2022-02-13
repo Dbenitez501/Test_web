@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuenta</title>
     <link rel="stylesheet" href="../css/estilos.css?v=<?php echo(rand()); ?>">
-    <link rel="stylesheet" href="../css/soluciones.css?v=<?php echo(rand()); ?>">
     <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
 </head>
 <body>
@@ -45,7 +44,7 @@
             echo '<script>
                 alertaFalla("Confirme la contraseña correctamente", "warning");
             </script>';
-        }else if($contra==""||$telefono==""||$contraconf=""){
+        }else if($contra=="" || $telefono=="" || $contraconf=""){
             echo '<script>
             alertaFalla("Complete los campos correctamente", "warning");
         </script>';

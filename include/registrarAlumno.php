@@ -43,12 +43,13 @@
     //Recibe los datos y los almacena en variables
     $nombre     = $_POST['nombre'];
     $matricula  = $_POST['mat'];
-    $carrera    = $_POST['carrera'];
+    $carrera    = $_POST['carreras'];
     $email      = $_POST['email'];
     $username   = $_POST['username'];
     $contra     = $_POST['contra'];
     $sexo;
-    $telefono;
+    $pais     = $_POST['paises'];
+    $telefono = $_POST['telefono'];
     $tipo = 3;
 
     //Encriptamos la contraseña para mandarla a la BDD
@@ -65,8 +66,8 @@
     }
 
     //Consulta para insertar los datos del alumno
-    $insertar = "INSERT INTO usuarios (username, contra, nombre, carrera, matricula, correo, telefono, sexo, id_tipo) VALUES 
-    ('$username', '$passCifrada', '$nombre', '$carrera', '$matricula', '$email', '$telefono', '$sexo', '$tipo')";
+    $insertar = "INSERT INTO usuarios (username, contra, nombre, carrera, matricula, correo, telefono, sexo, pais, id_tipo) VALUES 
+    ('$username', '$passCifrada', '$nombre', '$carrera', '$matricula', '$email', '$telefono', '$sexo', '$pais','$tipo')";
 
     //VERIFICA SI YA EXISTE EL USERNAME
     $verificarUsuario = $db->connect()->prepare("SELECT * FROM usuarios WHERE username = :user");
@@ -74,7 +75,7 @@
 
     if($verificarUsuario->rowCount() > 0) {
         echo '<script>
-            alertaFalla("El usuario ya está registrado", "warning");
+            alertaFalla("El nombre de usuario ya está registrado. Favor de colocar uno distinto a: '.$username.'.", "warning");
             // alert("El usuario ya está registrado");
             // window.history.go(-1);
         </script>';
@@ -87,7 +88,7 @@
 
     if($verificarCorreo->rowCount() > 0) {
         echo '<script>
-            alertaFalla("El correo ya está registrado", "warning");
+            alertaFalla("El correo '.$email.' ya está registrado. Favor de colocar uno distinto.", "warning");
             // alert("El correo ya está registrado");
             // window.history.go(-1);
         </script>';
@@ -100,7 +101,7 @@
 
     if($verificarMatricula->rowCount() > 0) {
         echo '<script>
-            alertaFalla("La matrícula ya existe", "warning");
+            alertaFalla("La matrícula '.$matricula.' ya está registrada. Favor de verificarla.", "warning");
             // alert("La matrícula ya existe");
             // window.history.go(-1);
         </script>';
@@ -119,7 +120,7 @@
         </script>';
     } else {
         echo '<script>
-                alertaCorrecto("Se registró correctamente");
+                alertaCorrecto("Se registró correctamente. Bienvenido(a) '.$nombre.' ");
                 // alert("Se registró correctamente");
                 // window.location = "../controlador.php";
             </script>';

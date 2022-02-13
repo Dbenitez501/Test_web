@@ -52,7 +52,7 @@
 
         $db = new DB();
 
-        $consulta = "SELECT contra FROM usuarios WHERE correo=:email";
+        $consulta = "SELECT username,contra FROM usuarios WHERE correo=:email";
 
         //EJECUTA LA CONSULTA
         $query = $db->connect()->prepare($consulta);
@@ -64,20 +64,16 @@
         </script>';
         }else{
             foreach($query as $pass) {
-                echo $pass['contra'];
                 $contraDes = SED::decryption($pass['contra']);
-                echo "<br>";
-                echo $contraDes;
-
 
                 $destinatario = $email;
-                $asunto = ("Recuperación de contraseña");
-                $mensaje = ("Contraseña:   ".$contraDes);
+                $asunto = ("Recuperacion de Cuenta");
+                $mensaje = ("Usuario:   ".$pass['username']."    Contraseña:   ".$contraDes);
                 $hader = ("Buen dia, te enviamos tu contraseña para que puedas volver a acceder a la página web");
                 mail($destinatario,$asunto,$mensaje,$hader);
 
                echo '<script>
-                    alertaCorrecto("Se envio tu contraseña a tu correo proporcionado");
+                    alertaCorrecto("Se envio tu contraseña al correo: '.$email.'");
                 </script>';
             }
         }

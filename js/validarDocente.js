@@ -1,6 +1,6 @@
 function validar()
 {
-    var nombre, numero_emp, email, telefono, sexo, username, contra, expresion_mail, expresion_nombre;
+    var nombre, numero_emp, email, telefono, sexo, pais, username, contra, expresion_mail, expresion_nombre;
     var s = false;
     
     nombre = document.getElementById("nombre").value;
@@ -12,7 +12,7 @@ function validar()
     username = document.getElementById("username").value;
     contra = document.getElementById("contra").value;
 
-    //Formato para los correos
+    //Formato para los correos y el nombre completo
     expresion_mail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     expresion_nombre= /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
 
@@ -36,16 +36,20 @@ function validar()
         alert("El Usuario es muy corto (Mínimo 7 caracteres)");
         return false;
     }
+    else if(numero_emp.length < 7) {
+        alert("El número de empleado es muy corto (Debe contener 7 dígitos)");
+        return false;
+    }
     else if(numero_emp.length > 7) {
-        alert("El número de empleado es muy largo (Máximo 7 dígitos)");
+        alert("El número de empleado es muy largo (Debe contener 7 dígitos)");
         return false;
     }
     else if(isNaN(numero_emp)) {
-        alert("El número de empleado debe contener solo dígitos enteros (Máximo 7 dígitos)");
+        alert("El número de empleado debe contener solo dígitos enteros (Debe contener 7 dígitos)");
         return false;
     }
-    else if(email.length > 100) {
-        alert("El email es muy largo (Máximo 100 caracteres)");
+    else if(email.length > 200) {
+        alert("El email es muy largo (Máximo 200 caracteres)");
         return false;
     }
     else if(!expresion_mail.test(email)) {
@@ -53,7 +57,11 @@ function validar()
         return false;
     }
     else if(telefono.length > 10) {
-        alert("El teléfono solo es de 10 dígitos");
+        alert("El teléfono debe contener 10 dígitos");
+        return false;
+    }
+    else if(telefono.length < 10) {
+        alert("El teléfono debe contener 10 dígitos");
         return false;
     }
     else if(contra.length > 40) {
@@ -65,7 +73,7 @@ function validar()
         return false;
     }
     else if(isNaN(telefono)) {
-        alert("El teléfono contiene caracteres inválidos");
+        alert("El teléfono contiene caracteres inválidos. Debe de ser numérico y contener 10 dígitos");
         return false;
     }
     else if(pais === "Elegir") {

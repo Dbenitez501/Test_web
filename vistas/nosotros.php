@@ -121,7 +121,7 @@ if(isset($_SESSION['user'])) {
                     <h1>Desarrolladores de la página</h1>
                     <p><strong>Back-end: </strong> Diego Benítez Reyna</p>
                     <p><i class="fas fa-envelope"></i>diegobenitez@live.com.mx</p>
-                    <p><strong>Front-end:</strong> Abiam Alberto Escobedo Ruíz</p>
+                    <p><strong>Front-end:</strong> Abiam Alberto Escobedo Ruiz</p>
                     <p><i class="fas fa-envelope"></i>abiamalberto.19@gmail.com</p>
                 </div>
             </div>

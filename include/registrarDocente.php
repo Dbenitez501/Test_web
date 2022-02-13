@@ -48,7 +48,7 @@
     $contra     = $_POST['contra'];
     $sexo;
     $pais     = $_POST['paises'];
-    $telefono;
+    $telefono = $_POST['telefono'];
     $tipo = 2;
 
     //Encriptamos la contraseña para mandarla a la BDD
@@ -57,11 +57,7 @@
     if(isset($_POST['sexo'])) {
         $sexo = $_POST['sexo'];
     } else {
-        $sexo = "";
-    }
-
-    if(isset($_POST['telefono'])) {
-        $telefono = $_POST['telefono'];
+        $sexo = "Otro";
     }
 
     //Consulta para insertar los datos del Docente
@@ -74,7 +70,7 @@
 
     if($verificarUsuario->rowCount() > 0) {
         echo '<script>
-            alertaFalla("El nombre de usuario ya está registrado. Favor de escribir uno distinto", "warning");
+            alertaFalla("El nombre de usuario ya está registrado. Favor de colocar uno distinto a: '.$username.'.", "warning");
         </script>';
         exit;
     }
@@ -85,7 +81,7 @@
 
     if($verificarCorreo->rowCount() > 0) {
         echo '<script>
-            alertaFalla("El correo ingresado ya está registrado", "warning");
+            alertaFalla("El correo '.$email.' ya está registrado. Favor de colocar uno distinto.", "warning");
         </script>';
         exit;
     }
@@ -96,7 +92,7 @@
 
     if($verificarNumEmp->rowCount() > 0) {
         echo '<script>
-            alertaFalla("El número de empleado ya existe. Favor de comprobarlo", "warning");
+            alertaFalla("El número de empleado '.$numero_emp.' ya está registrada. Favor de verificarlo.", "warning");
         </script>';
         exit;
     }
@@ -113,7 +109,7 @@
         </script>';
     } else {
         echo '<script>
-                alertaCorrecto("Se registró correctamente");
+                alertaCorrecto("Se registró correctamente. Bienvenido(a) '.$nombre.' ");
                 // alert("Se registró correctamente");
                 // window.location = "../controlador.php";
             </script>';
