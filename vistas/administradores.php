@@ -114,7 +114,6 @@ $user = new User();
                     </thead>
                     <tbody>
                     <?php
-                    $sexo="";
                     $tipo="";
                     $query = $db->connect()->prepare("SELECT * FROM usuarios WHERE id_tipo=1 OR id_tipo=5");
                     $query->execute();
@@ -122,11 +121,6 @@ $user = new User();
                     if($query->rowCount()) {
                         while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
                         $id = $data['id_usuario'];
-                        if($data['sexo'] == "H") {
-                            $sexo="Masculino";
-                        } else {
-                            $sexo="Femenino";
-                        }
 
                         if($data['id_tipo'] === 1) {
                             $tipo = 'Administrador';
@@ -143,7 +137,7 @@ $user = new User();
                         } else {
                         echo $data['telefono'];
                         }?></td>
-                        <td data-label="Sexo"><?php echo $sexo;?></td>
+                        <td data-label="Sexo"><?php echo $data['sexo'];?></td>
                         <td data-label="Tipo"><?php echo $tipo;?></td>
                         <td data-label="Botones"><a href='mod_admin.php?id=<?php echo $id?>'><input type="submit" value="Modificar" class="boton_mod"></a><a href='#' onclick="preguntar(<?php echo $id?>)"><input type="submit" value="Eliminar" id="btnEliminar" class="boton_elim"></a></td>
                     </tr>

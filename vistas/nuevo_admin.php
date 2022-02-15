@@ -73,42 +73,54 @@ $user = new User();
                     $tipo = "";
                     ?>
                         <div class="input-container">
-                            <h3 for="nombre">Nombre</h3>
-                            <input type="text" name="nombre" id="nombre" placeholder="Nombre Completo" required>
+                            <h3 for="nombre">Nombre:</h3>
+                            <input type="text" name="nombre" id="nombre" placeholder="Nombre(s) y Apellido(s)" required pattern="^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Sólo se aceptan letras">
                         </div>
                         <div class="input-container">
-                            <h3 for="email">Email</h3>
-                            <input type="email" name="email" id="email" placeholder="@" required>
+                            <h3 for="email">Email:</h3>
+                            <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required title="Correo invalido. Ejemplo: ejemplo@gmail.com">
                         </div>
                         <div class="input-container">
-                            <h3 for="telefono">Teléfono</h3>
-                            <input type ="text" name="telefono" id="telefono" placeholder="(Opcional)">
+                            <h3 for="telefono">Teléfono:</h3>
+                            <input type ="text" name="telefono" id="telefono" placeholder="1234567890 (10 Digitos)" pattern="[0-9]{10}" required title="Sólo se aceptan dígitos (10 Dígitos necesarios)">
                         </div>
                         <div class="input-container">
-                            <h3 for="sexo">Sexo</h3>
-                            <div class="radio-btn">
-                                <input type="radio" name="sexo" value="H" id="sexo" <?php if($sexo == "H") echo "checked"; ?>>
-                                <label for="H">Masculino</label>		
-                                <input type="radio" name="sexo" value="M" id="sexo" <?php if($sexo == "M") echo "checked"; ?>>
-                                <label for="M">Femenino</label>
-                            </div>
+                            <h3 for="sexo">Genero:</h3>
+                            <label for="M" class="l-radio">
+                                <input type="radio" id="M" name="sexo" tabindex="1" value="Masculino" <?php if($sexo == "Masculino") echo "checked"; ?> required>
+                                <span>Masculino</span>
+                            </label>
+
+                            <label for="F" class="l-radio">
+                                <input type="radio" id="F" name="sexo" tabindex="2" value="Femenino" <?php if($sexo == "Femenino") echo "checked"; ?> required>
+                                <span>Femenino</span>
+                            </label>
+                            <label for="O" class="l-radio">
+                                <input type="radio" id="O" name="sexo" tabindex="3" value="Otro" <?php if($sexo == "Otro") echo "checked"; ?> required>
+                                <span>Otro</span>
+                            </label>
                         </div>
                         <div class="input-container">
-                            <h3 for="tipo">Tipo</h3>
-                            <div class="radio-btn">
-                                <input type="radio" name="tipo" value=1 id="tipo" <?php if($tipo == 1) echo "checked"; ?>>
-                                <label for="1">Administrador</label>		
-                                <input type="radio" name="tipo" value=5 id="tipo" <?php if($tipo == 5) echo "checked"; ?>>
-                                <label for="5">Auxiliar</label>
-                            </div>
+                            <h3 for="tipo">Tipo:</h3>
+                            
+                            <label for="admin" class="l-radio">
+                                <input type="radio" name="tipo" value=1 id="admin" required <?php if($tipo == 1) echo "checked"; ?>>
+                                <span>Administrador</span>
+                            </label>
+
+                            <label for="aux" class="l-radio">
+                                <input type="radio" name="tipo" value=5 id="aux" required <?php if($tipo == 5) echo "checked"; ?>>
+                                <span>Auxiliar</span>
+                            </label>
+
                         </div>
                         <div class="input-container">
-                            <h3 for="username">Username</h3>
-                            <input type ="text" name="username" id="username" placeholder="Username" required>
+                            <h3 for="username">Usuario:</h3>
+                            <input type ="text" name="username" id="username" placeholder="Inicio de sesión (Mínimo 7 caracteres)" required minlength="7">
                         </div>
                         <div class="input-container">
-                            <h3 for="contra">Contraseña</h3>
-                            <input type ="password" name="contra" id="contra" placeholder="*****" required>
+                            <h3 for="contra">Contraseña:</h3>
+                            <input type ="password" name="contra" id="contra" placeholder="******* (Mínimo 7 caracteres)" required minlength="7">
                         </div>
 
 

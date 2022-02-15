@@ -119,6 +119,8 @@ $user = new User();
                         <tr>
                             <th>Nombre</th>
                             <th>Correo</th>
+                            <th>País</th>
+                            <th>Teléfono</th>
                             <th>Tipo</th>
                             <th>Sexo</th>
                             <th>Asistencia</th>
@@ -128,14 +130,14 @@ $user = new User();
                     <?php
                     $query;
                     if(isset($_GET["idP"])) {
-                        $query = $db->connect()->prepare("SELECT usuarios.nombre, usuarios.correo, tipo_usuario.tipo, usuarios.sexo, registros.asistencia 
+                        $query = $db->connect()->prepare("SELECT usuarios.nombre, usuarios.correo, usuarios.pais, usuarios.telefono, tipo_usuario.tipo, usuarios.sexo, registros.asistencia 
                         FROM registros JOIN usuarios on registros.id_usuario = usuarios.id_usuario JOIN tipo_usuario ON usuarios.id_tipo = 
                         tipo_usuario.id_tipo WHERE registros.id_presencial =:id");
 
                         $query->execute(['id'=> $_GET["idP"]]);
 
                     } elseif(isset($_GET["idV"])) {
-                        $query = $db->connect()->prepare("SELECT usuarios.nombre, usuarios.correo, tipo_usuario.tipo, usuarios.sexo, registros.asistencia 
+                        $query = $db->connect()->prepare("SELECT usuarios.nombre, usuarios.correo, usuarios.pais, usuarios.telefono, tipo_usuario.tipo, usuarios.sexo, registros.asistencia 
                         FROM registros JOIN usuarios on registros.id_usuario = usuarios.id_usuario JOIN tipo_usuario ON usuarios.id_tipo = 
                         tipo_usuario.id_tipo WHERE registros.id_virtual =:id");
 
@@ -148,6 +150,8 @@ $user = new User();
                     <tr> 
                         <td data-label="Nombre"><?php echo $data["nombre"];?></td>
                         <td data-label="Correo"><?php echo $data["correo"];?></td>
+                        <td data-label="Pais"><?php echo $data["pais"];?></td>
+                        <td data-label="Telefono"><?php echo $data["telefono"];?></td>
                         <td data-label="Tipo"><?php echo $data["tipo"];?></td>
                         <td data-label="Sexo"><?php echo $data["sexo"];?></td>
                         <td data-label="Asistencia">

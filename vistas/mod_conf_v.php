@@ -89,53 +89,56 @@ $user = new User();
                         <input type="hidden" name="id" id="id" value="<?php echo $_GET['id'];?>">
 
                         <div class="input-container">
-                            <h3 for="titulo">Título</h3>
+                            <h3 for="titulo">Título:</h3>
                             <input type="text" name="titulo" id="titulo" value="<?php echo $consulta[0];?>" placeholder="..." required>
                         </div>
                         <div class="input-container input-txtarea-cont">
-                            <h3 for="descripcion">Descripción</h3>
-                            <textarea class="input-textarea" type="text" name="descripcion" id="descripcion" " placeholder="descripción" required><?php echo $consulta[1];?></textarea>
+                            <h3 for="descripcion">Descripción:</h3>
+                            <textarea class="input-textarea" type="text" name="descripcion" id="descripcion"  placeholder="Descripción de la conferencia" required><?php echo $consulta[1];?></textarea>
                         </div>
                         <div class="input-container">
-                            <h3 for="expositor">Expositor</h3>
+                            <h3 for="expositor">Expositor:</h3>
                             <input type="text" name="expositor" id="expositor" value="<?php echo $consulta[2];?>" placeholder="Nombre"required>
                         </div>
                         <div class="input-container">
-                            <h3 for="fecha">Fecha</h3>
+                            <h3 for="fecha">Fecha:</h3>
                             <input type="date" name="fecha" id="fecha" class="tcal" value="<?php echo $consulta[3];?>" placeholder="año/mes/día (Seleccionar)" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="hora">Hora</h3>
+                            <h3 for="hora">Hora:</h3>
                             <input type ="time" name="hora" id="hora" value="<?php echo $consulta[4];?>" placeholder="24h"required>
                         </div>
                         <div class="input-container">
-                            <h3 for="plataforma">Plataforma</h3>
+                            <h3 for="plataforma">Plataforma:</h3>
                             <input type ="text" name="plataforma" id="plataforma" value="<?php echo $consulta[5];?>" placeholder="(MsTeams,Zoom..)" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="codigo_plat">Código Plataforma</h3>
-                            <input type ="text" name="codigo_plat" id="codigo_plat" value="<?php echo $consulta[6];?>" placeholder="">
+                            <h3 for="codigo_plat">Código Plataforma:</h3>
+                            <input type ="text" name="codigo_plat" id="codigo_plat" value="<?php echo $consulta[6];?>" placeholder="Código" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="codigo_as">Código de asistencia</h3>
-                            <input type ="text" name="codigo_as" id="codigo_as" value="<?php echo $consulta[7];?>"required>
+                            <h3 for="codigo_as">Código de asistencia:</h3>
+                            <input type ="text" name="codigo_as" id="codigo_as" value="<?php echo $consulta[7];?>" placeholder="Clave de asistencia" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="cap_max">Capacidad Máxima </h3>
-                            <input type ="text" name="cap_max" id="cap_max" value="<?php echo $consulta[8];?>" placeholder="###" required>
+                            <h3 for="cap_max">Capacidad Máxima:</h3>
+                            <input type ="number" name="cap_max" id="cap_max" value="<?php echo $consulta[8];?>" placeholder="0" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="estatus">Estado</h3>
-                            <div class="radio-btn">
-                            <input type="radio" name="estado" value="1" id="estado" <?php if($consulta[9] == "1") echo "checked"; ?>>
-                            <label for="1">Activado</label>		
-                            <input type="radio" name="estado" value="0" id="estado" <?php if($consulta[9] == "0") echo "checked"; ?>>
-                            <label for="0">Desactivado</label>
-                            </div>
+                            <h3 for="estatus">Estado:</h3>
+                            <label for="Activado" class="l-radio">
+                                <input type="radio" name="estado" value="1" id="Activado" <?php if($consulta[9] == "1") echo "checked"; ?>>
+                                <span>Activado</span>
+                            </label>
+
+                            <label for="Desactivado" class="l-radio">
+                                <input type="radio" name="estado" value="0" id="Desactivado" <?php if($consulta[9] == "0") echo "checked"; ?>>
+                                <span>Desactivado</span>
+                            </label>
                         </div>
                         <div class="input-container">
-                            <h3 for="imagen">Nueva Imagen</h3>
-                            <input type="file" class="form-img" id="imagen" name="imagen" multiple>
+                            <h3 for="imagen">Nueva Imagen:</h3>
+                            <input type="file" class="form-img" id="imagen" name="imagen" multiple >
                         </div>
                         <div class="input-container_img">
                             <img class="img_mod"  src="../img/expositor_img/<?php echo $consulta[10] ?>">

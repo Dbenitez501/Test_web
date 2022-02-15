@@ -83,19 +83,19 @@ $user = new User();
                         <input type="hidden" name="id" id="id" value="<?php echo $_GET['id'];?>">
 
                         <div class="input-container">
-                            <h3 for="nombre">Nombre</h3>
-                            <input type="text" name="nombre" id="nombre" value="<?php echo $consulta[2];?>" placeholder="Nombre Completo" required>
+                            <h3 for="nombre">Nombre:</h3>
+                            <input type="text" name="nombre" id="nombre" value="<?php echo $consulta[2];?>"  placeholder="Nombre(s) y Apellido(s)" required pattern="^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Sólo se aceptan letras">
                         </div>
                         <div class="input-container">
-                            <h3 for="email">Email</h3>
-                            <input type="email" name="email" id="email" value="<?php echo $consulta[3];?>" placeholder="@" required>
+                            <h3 for="email">Email:</h3>
+                            <input type="email" name="email" id="email" value="<?php echo $consulta[3];?>" placeholder="ejemplo@gmail.com" required title="Correo invalido. Ejemplo: ejemplo@gmail.com">
                         </div>
                         <div class="input-container">
-                            <h3 for="telefono">Teléfono</h3>
-                            <input type ="text" name="telefono" id="telefono" value="<?php echo $consulta[4];?>" placeholder="(Opcional)">
+                            <h3 for="telefono">Teléfono:</h3>
+                            <input type ="text" name="telefono" id="telefono" value="<?php echo $consulta[4];?>" placeholder="1234567890 (10 Digitos)" pattern="[0-9]{10}" required title="Sólo se aceptan dígitos (10 Dígitos necesarios)">
                         </div>
                         <div class="input-container">
-                            <h3 for="sexo">Sexo</h3>
+                            <h3 for="sexo">Sexo:</h3>
                             <div class="radio-btn">
                                 <input type="radio" name="sexo" value="H" id="sexo" <?php if($consulta[5] == "H") echo "checked"; ?>>
                                 <label for="1">Masculino</label>		
@@ -104,7 +104,7 @@ $user = new User();
                             </div>
                         </div>
                         <div class="input-container">
-                            <h3 for="tipo">Tipo</h3>
+                            <h3 for="tipo">Tipo:</h3>
                             <div class="radio-btn">
                                 <input type="radio" name="tipo" value=1 id="tipo" <?php if($consulta[6] == 1) echo "checked"; ?>>
                                 <label for="1">Administrador</label>		
@@ -113,12 +113,12 @@ $user = new User();
                             </div>
                         </div>
                         <div class="input-container">
-                            <h3 for="username">Username</h3>
-                            <input type ="text" name="username" id="username" value="<?php echo $consulta[0];?>" placeholder="Username" required>
+                            <h3 for="username">Usuario:</h3>
+                            <input type ="text" name="username" id="username" value="<?php echo $consulta[0];?>"  placeholder="Inicio de sesión (Mínimo 7 caracteres)" required minlength="7">
                         </div>
                         <div class="input-container">
-                            <h3 for="contra">Contraseña</h3>
-                            <input type ="password" name="contra" id="contra" value="<?php echo $contraDes;?>" placeholder="*****" required>
+                            <h3 for="contra">Contraseña:</h3>
+                            <input type ="password" name="contra" id="contra" value="<?php echo $contraDes;?>" placeholder="******* (Mínimo 7 caracteres)" required minlength="7">
                         </div>                        
 
                         <div class="btn-container">

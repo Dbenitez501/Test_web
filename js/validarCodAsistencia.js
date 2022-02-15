@@ -10,7 +10,7 @@ function validar()
       return false;
     }
     else if(comentario.length > 300) {
-      alert("El comentario es muy largo");
+      alert("El comentario es muy largo (Máximo 300 caracteres)");
       return false;
     }
 }

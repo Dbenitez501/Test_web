@@ -71,20 +71,20 @@ $user = new User();
                     <form class="registro-form" action="../include/registrarLugar.php" target="" method="POST" name="formRegLugar" onsubmit="return validar();">
 
                         <div class="input-container">
-                            <h3 for="nombre">Nombre</h3>
-                            <input type="text" name="nombre" id="nombre" placeholder="....." required>
+                            <h3 for="nombre">Nombre:</h3>
+                            <input type="text" name="nombre" id="nombre" placeholder="Auditorio … " required>
                         </div>
                         <div class="input-container">
-                            <h3 for="ubicacion">Ubicación</h3>
+                            <h3 for="ubicacion">Ubicación:</h3>
                             <input type="text" name="ubicacion" id="ubicacion" placeholder="(Edificio 2,CIDET, etc..)" required>
                         </div>
                         <div class="input-container input-txtarea-cont">
-                            <h3 for="desc">Descripción</h3>
-                            <textarea class="input-textarea" type="text" name="desc" id="desc" placeholder="Descripción" required></textarea>
+                            <h3 for="desc">Características:</h3>
+                            <textarea class="input-textarea" type="text" name="desc" id="desc" placeholder="Cuenta con pantallas, proyector, escenario, climatizado, etc.." required></textarea>
                         </div>
                         <div class="input-container">
-                            <h3 for="cap_max">Capacidad Máxima </h3>
-                            <input type ="number" name="cap_max" id="cap_max" placeholder="###" min="0" required>
+                            <h3 for="cap_max">Capacidad Máxima:</h3>
+                            <input type ="number" name="cap_max" id="cap_max" placeholder="Capacidad máxima" min="0" required>
                         </div>
                         <br>
 

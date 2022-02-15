@@ -25,12 +25,12 @@ function validar() {
         alert("El título es muy largo");
         return false;
     }
-    else if (desc.length > 300) {
-        alert("La descricpión es muy larga");
+    else if (desc.length > 500) {
+        alert("La descricpión es muy larga (Máximo 500 caracteres)");
         return false;
     }
     else if (expositor.length > 200) {
-        alert("Nombre de expositor muy largo");
+        alert("Nombre de expositor muy largo (Máximo 200 caracteres)");
         return false;
     }
     else if (!expresionHora.test(hora)) {

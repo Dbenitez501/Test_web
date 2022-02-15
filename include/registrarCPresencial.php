@@ -61,71 +61,80 @@
 
     // renombrar imagen
     $userpic = rand(1000,1000000).".".$img_ext;
-    if(in_array($img_ext, $valid_ext)) {
-        //checar tamaño del archivo 5MB
-        if($img_size < 5000000) {
-            move_uploaded_file($tmp_dir, $upload_dir.$userpic);
 
-            $insertar = "INSERT INTO presencial (titulo, descripcion, expositor, fecha_inicio, hora_inicio, capacidad_actual, estado, id_lugar, codigo_asistencia, tipo, imagen, hora_creacion) VALUES ('$titulo', '$desc', '$expositor', '$fecha', '$hora', '$cap_actual', '$estado', '$lugar', '$codigo_as', '$tipo', '$userpic', now())";
-
-            //VERIFICA SI YA ESTÁ OCUPADO EL LUGAR EN UNA HORA
-            $verificaLugarHora = $db->connect()->prepare("SELECT * FROM presencial WHERE hora_inicio = :hora AND id_lugar = :lugar AND fecha_inicio = :fecha");
-            $verificaLugarHora->execute(['hora' => $hora, 'lugar' => $lugar, 'fecha' => $fecha]);
-
-            if($verificaLugarHora->rowCount() > 0) {
-                echo '<script>
-                    alertaFalla("El lugar a la hora y día desingada ya está ocupado", "warning");
-                    // alert("El lugar a la hora y día desingada ya está ocupado");
-                    // window.history.go(-1);
-                </script>';
-                exit;
-            }
-
-            //VERIFICA SI YA EXISTE EL CODIGO DE ASISTENCIA
-            $verificarCodigoAsistencia = $db->connect()->prepare("SELECT * FROM presencial WHERE codigo_asistencia = :cod_as");
-            $verificarCodigoAsistencia->execute(['cod_as' => $codigo_as]);
-
-            if($verificarCodigoAsistencia->rowCount() > 0) {
-                echo '<script>
-                    alertaFalla("El codigo de asistencia ya existe", "warning");
-                    // alert("El codigo de asistencia ya existe");
-                    // window.history.go(-1);
-                </script>';
-                exit;
-            }
-
-            //EJECUTA LA CONSULTA DE INSERTAR
-            $query = $db->connect()->prepare($insertar);
-            $query->execute();
-
-            if(!$query) {
-                echo '<script>
-                    alertaFalla("Error al registrarse", "error");
-                    // alert("Error al registrarse");
-                    // window.history.go(-1);
-                </script>';
+    if($lugar == "escoge") {
+        echo '<script>
+        alertaFalla("Seleccione un lugar", "warning");
+        </script>';
+    }else{
+        
+        if(in_array($img_ext, $valid_ext)) {
+            //checar tamaño del archivo 5MB
+            if($img_size < 5000000) {
+                move_uploaded_file($tmp_dir, $upload_dir.$userpic);
+    
+                $insertar = "INSERT INTO presencial (titulo, descripcion, expositor, fecha_inicio, hora_inicio, capacidad_actual, estado, id_lugar, codigo_asistencia, tipo, imagen, hora_creacion) VALUES ('$titulo', '$desc', '$expositor', '$fecha', '$hora', '$cap_actual', '$estado', '$lugar', '$codigo_as', '$tipo', '$userpic', now())";
+    
+                //VERIFICA SI YA ESTÁ OCUPADO EL LUGAR EN UNA HORA
+                $verificaLugarHora = $db->connect()->prepare("SELECT * FROM presencial WHERE hora_inicio = :hora AND id_lugar = :lugar AND fecha_inicio = :fecha");
+                $verificaLugarHora->execute(['hora' => $hora, 'lugar' => $lugar, 'fecha' => $fecha]);
+    
+                if($verificaLugarHora->rowCount() > 0) {
+                    echo '<script>
+                        alertaFalla("El lugar a la hora y día desingada ya está ocupado", "warning");
+                        // alert("El lugar a la hora y día desingada ya está ocupado");
+                        // window.history.go(-1);
+                    </script>';
+                    exit;
+                }
+    
+                //VERIFICA SI YA EXISTE EL CODIGO DE ASISTENCIA
+                $verificarCodigoAsistencia = $db->connect()->prepare("SELECT * FROM presencial WHERE codigo_asistencia = :cod_as");
+                $verificarCodigoAsistencia->execute(['cod_as' => $codigo_as]);
+    
+                if($verificarCodigoAsistencia->rowCount() > 0) {
+                    echo '<script>
+                        alertaFalla("El codigo de asistencia ya existe", "warning");
+                        // alert("El codigo de asistencia ya existe");
+                        // window.history.go(-1);
+                    </script>';
+                    exit;
+                }
+    
+                //EJECUTA LA CONSULTA DE INSERTAR
+                $query = $db->connect()->prepare($insertar);
+                $query->execute();
+    
+                if(!$query) {
+                    echo '<script>
+                        alertaFalla("Error al registrarse", "error");
+                        // alert("Error al registrarse");
+                        // window.history.go(-1);
+                    </script>';
+                } else {
+                    echo '<script>
+                            alertaCorrecto("Conferencia presencial registrada exitosamente");
+                            // alert("Conferencia presencial registrada exitosamente");
+                            // window.location = "../vistas/conferenciasP.php";
+                        </script>';
+                }
+    
+    
             } else {
                 echo '<script>
-                        alertaCorrecto("Conferencia presencial registrada exitosamente");
-                        // alert("Conferencia presencial registrada exitosamente");
-                        // window.location = "../vistas/conferenciasP.php";
-                    </script>';
+                alertaFalla("El archivo es muy largo, menor a 5MB", "warning");
+                // alert("El archivo es muy largo, menor a 5MB");
+                // window.history.go(-1);
+                </script>';
             }
-
-
         } else {
             echo '<script>
-            alertaFalla("El archivo es muy largo, menor a 5MB", "warning");
-            // alert("El archivo es muy largo, menor a 5MB");
-            // window.history.go(-1);
-            </script>';
+                alertaFalla("Solo formatos de imagen JPG, JPEG y PNG", "warning");
+                // alert("Solo formatos de imagen JPG, JPEG y PNG");
+                // window.history.go(-1);
+                </script>';
         }
-    } else {
-        echo '<script>
-            alertaFalla("Solo formatos de imagen JPG, JPEG y PNG", "warning");
-            // alert("Solo formatos de imagen JPG, JPEG y PNG");
-            // window.history.go(-1);
-            </script>';
+
     }
 
 

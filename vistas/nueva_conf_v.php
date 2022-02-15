@@ -71,44 +71,44 @@ $user = new User();
                     <form class="registro-form" action="../include/registrarCVirtual.php" target="" method="POST" enctype="multipart/form-data" name="formRegConfVirtual" onsubmit="return validar();">
 
                         <div class="input-container">
-                            <h3 for="titulo">Título</h3>
-                            <input type="text" name="titulo" id="titulo" placeholder="..." required>
+                            <h3 for="titulo">Título:</h3>
+                            <input type="text" name="titulo" id="titulo" placeholder="Webinar: Nombre" required title="Título de la conferencia">
                         </div>
                         <div class="input-container input-txtarea-cont">
-                            <h3 for="descripcion">Descripción</h3>
-                            <textarea class="input-textarea" type="text" name="descripcion" id="descripcion" placeholder="Descripción" required></textarea>
+                            <h3 for="descripcion">Descripción:</h3>
+                            <textarea class="input-textarea" type="text" name="descripcion" id="descripcion" placeholder="Descripción de la conferencia" required></textarea>
                         </div>
                         <div class="input-container">
-                            <h3 for="expositor">Expositor</h3>
-                            <input type="text" name="expositor" id="expositor" placeholder="Nombre" required>
+                            <h3 for="expositor">Expositor:</h3>
+                            <input type="text" name="expositor" id="expositor" placeholder="Nombre del expositor" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="fecha">Fecha</h3>
+                            <h3 for="fecha">Fecha:</h3>
                             <input type="date" name="fecha" id="fecha" class="tcal" placeholder="año/mes/día (Seleccionar)" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="hora">Hora</h3>
-                            <input type ="time" name="hora" id="hora">
+                            <h3 for="hora">Hora:</h3>
+                            <input type ="time" name="hora" id="hora" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="plataforma">Plataforma</h3>
+                            <h3 for="plataforma">Plataforma:</h3>
                             <input type ="text" name="plataforma" id="plataforma" placeholder="(MsTeams,Zoom..)" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="codigo_plat">Código de Plataforma</h3>
-                            <input type ="text" name="codigo_plat" id="codigo_plat" placeholder="" required>
+                            <h3 for="codigo_plat">Código de Plataforma:</h3>
+                            <input type ="text" name="codigo_plat" id="codigo_plat" placeholder="Código" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="codigo_as">Código de asistencia</h3>
-                            <input type ="text" name="codigo_as" id="codigo_as" required>
+                            <h3 for="codigo_as">Código de asistencia:</h3>
+                            <input type ="text" name="codigo_as" id="codigo_as" placeholder="Clave de asistencia" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="cap_max">Capacidad Máxima </h3>
-                            <input type ="number" name="cap_max" id="cap_max" placeholder="###" min="0" required>
+                            <h3 for="cap_max">Capacidad Máxima:</h3>
+                            <input type ="number" name="cap_max" id="cap_max" placeholder="0" min="0" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="imagen">Imagen</h3>
-                            <input type="file" class="form-img" id="imagen" name="imagen" multiple>
+                            <h3 for="imagen">Imagen:</h3>
+                            <input type="file" class="form-img" id="imagen" name="imagen" multiple required>
                         </div>
 
 

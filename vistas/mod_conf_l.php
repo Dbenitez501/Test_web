@@ -80,29 +80,32 @@ $user = new User();
                         <input type="hidden" name="id" id="id" value="<?php echo $_GET['id'];?>">
 
                         <div class="input-container">
-                            <h3 for="nombre">Nombre</h3>
+                            <h3 for="nombre">Nombre:</h3>
                             <input type="text" name="nombre" id="nombre" value="<?php echo $consulta[0];?>" placeholder="....." required>
                         </div>
                         <div class="input-container">
-                            <h3 for="ubicacion">Ubicación</h3>
+                            <h3 for="ubicacion">Ubicación:</h3>
                             <input type="text" name="ubicacion" id="ubicacion" value="<?php echo $consulta[1];?>" placeholder="(Edificio 2,CIDET, etc..)" required>
                         </div>
                         <div class="input-container input-txtarea-cont">
-                            <h3 for="desc">Descripción</h3>
+                            <h3 for="desc">Descripción:</h3>
                             <textarea class="input-textarea" type="text" name="desc" id="desc" " placeholder="descripción" required><?php echo $consulta[3];?></textarea>
                         </div>
                         <div class="input-container">
-                            <h3 for="cap_max">Capacidad Máxima</h3>
-                            <input type="text" name="cap_max" id="cap_max" value="<?php echo $consulta[2];?>" placeholder="###" required>
+                            <h3 for="cap_max">Capacidad Máxima:</h3>
+                            <input type="number" name="cap_max" id="cap_max" value="<?php echo $consulta[2];?>" placeholder="###" required>
                         </div>
                         <div class="input-container">
-                            <h3 for="estado">Estado</h3>
-                            <div class="radio-btn">
-                                <input type="radio" name="estado" value="Habilitado" id="estado" <?php if($consulta[4] == "Habilitado") echo "checked"; ?>>
-                                <label for="Habilitado">Habilitado</label>		
-                                <input type="radio" name="estado" value="Deshabilitado" id="estado" <?php if($consulta[4] == "Deshabilitado") echo "checked"; ?>>
-                                <label for="Deshabilitado">Deshabilitado</label>
-                            </div>
+                            <h3 for="estado">Estado:</h3>
+                                <label for="Activado" class="l-radio">
+                                    <input type="radio" name="estado" value="Habilitado" id="Activado" <?php if($consulta[4] == "Habilitado") echo "checked"; ?>>
+                                    <span>Habilitado</span>
+                                </label>
+
+                                <label for="Desactivado" class="l-radio">
+                                    <input type="radio" name="estado" value="Deshabilitado" id="Desactivado" <?php if($consulta[4] == "Deshabilitado") echo "checked"; ?>>
+                                    <span>Deshabilitado</span>
+                                </label>
                         </div>
                         
 

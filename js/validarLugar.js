@@ -11,7 +11,7 @@ function validar()
         alert("Todos los campos son obligatorios");
         return false;
     }
-    else if(nombre.length > 200) {
+    else if(nombre.length > 700) {
         alert("El nombre de lugar es muy largo");
         return false;
     }

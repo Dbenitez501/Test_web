@@ -89,14 +89,20 @@
                         
                         <div class="input-container">
                             <h3 for="sexo">Género:</h3>
-                            <div class="radio-btn">
-                                <input type="radio" name="sexo" value="Masculino" id="sexo" <?php if($sexo == "Masculino") echo "checked"; ?> required>
-                                <label for="M">Masculino</label>		
-                                <input type="radio" name="sexo" value="Femenino" id="sexo" <?php if($sexo == "Femenino") echo "checked"; ?> required>
-                                <label for="F">Femenino</label>
-                                <input type="radio" name="sexo" value="Otro" id="sexo" <?php if($sexo == "Otro") echo "checked"; ?> required>
-                                <label for="O">Otro</label>
-                            </div>
+                            <label for="M" class="l-radio">
+                                <input type="radio" id="M" name="sexo" tabindex="1" value="Masculino" <?php if($sexo == "Masculino") echo "checked"; ?> required>
+                                <span>Masculino</span>
+                            </label>
+
+                            <label for="F" class="l-radio">
+                                <input type="radio" id="F" name="sexo" tabindex="2" value="Femenino" <?php if($sexo == "Femenino") echo "checked"; ?> required>
+                                <span>Femenino</span>
+                            </label>
+
+                                <label for="O" class="l-radio">
+                                <input type="radio" id="O" name="sexo" tabindex="3" value="Otro" <?php if($sexo == "Otro") echo "checked"; ?> required>
+                                <span>Otro</span>
+                            </label>
                         </div>
                         
                         <div class="input-container">
@@ -343,11 +349,11 @@
                                 </select>
                         </div>
 
-                        <!--  -->
+                        <!--  
                         <br>
                         <h3>Datos para el inicio de sesión</h3>
                         <hr>
-                        <!--  -->
+                        -->
                         <div class="input-container">
                             <h3 for="username">Usuario:</h3>
                             <input type ="text" name="username" id="username" placeholder="Inicio de sesión (Mínimo 7 caracteres)" required minlength="7">
