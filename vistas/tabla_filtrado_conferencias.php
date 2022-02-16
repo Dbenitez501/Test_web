@@ -124,7 +124,7 @@ $user = new User();
                             <th>País</th>
                             <th>Teléfono</th>
                             <th>Tipo</th>
-                            <th>Sexo</th>
+                            <th>Genero</th>
                             <th>Asistencia</th>
                         </tr>
                     </thead>
