@@ -384,7 +384,7 @@ $(document).ready(function () {
             searchPanes: {
                 show: true
             },
-            targets: [2, 4, 5, 6]
+            targets: [1, 2, 4, 6, 7, 8]
         }
         ],
 
