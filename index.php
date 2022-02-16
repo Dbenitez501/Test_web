@@ -94,7 +94,7 @@ $virtual = new Virtual();
             </h3>
             <br>    
             <!-- Contenedor de lar tarjetas -->
-            <div class="row row-prod">
+            <div class="row container-card">
                 <!--CODIGO PARA GENERAR LAS CONFERENCIAS DISPONIBLES-->
                 <?php
                     $queryVirtual = $db->connect()->prepare('SELECT * FROM virtual WHERE estado=1');
