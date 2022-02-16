@@ -95,22 +95,36 @@ $user = new User();
                             <input type ="text" name="telefono" id="telefono" value="<?php echo $consulta[4];?>" placeholder="1234567890 (10 Digitos)" pattern="[0-9]{10}" required title="Sólo se aceptan dígitos (10 Dígitos necesarios)">
                         </div>
                         <div class="input-container">
-                            <h3 for="sexo">Sexo:</h3>
-                            <div class="radio-btn">
-                                <input type="radio" name="sexo" value="H" id="sexo" <?php if($consulta[5] == "H") echo "checked"; ?>>
-                                <label for="1">Masculino</label>		
-                                <input type="radio" name="sexo" value="M" id="sexo" <?php if($consulta[5] == "M") echo "checked"; ?>>
-                                <label for="0">Femenino</label>
-                            </div>
+                            <h3 for="sexo">Genero:</h3>
+
+                            <label for="M" class="l-radio">
+                            <input type="radio" name="sexo" value="Masculino" id="M" <?php if($consulta[5] == "Masculino") echo "checked"; ?>>
+                                <span>Masculino</span>
+                            </label>
+
+                            <label for="F" class="l-radio">
+                            <input type="radio" name="sexo" value="Femenino" id="F" <?php if($consulta[5] == "Femenino") echo "checked"; ?>>
+                                <span>Femenino</span>
+                            </label>
+
+                            <label for="O" class="l-radio">
+                                <input type="radio" name="sexo" value="Otro" id="O" <?php if($consulta[5] == "Otro") echo "checked"; ?>>
+                                <span>Otro</span>
+                            </label>
                         </div>
                         <div class="input-container">
                             <h3 for="tipo">Tipo:</h3>
-                            <div class="radio-btn">
-                                <input type="radio" name="tipo" value=1 id="tipo" <?php if($consulta[6] == 1) echo "checked"; ?>>
-                                <label for="1">Administrador</label>		
-                                <input type="radio" name="tipo" value=5 id="tipo" <?php if($consulta[6] == 5) echo "checked"; ?>>
-                                <label for="5">Auxiliar</label>
-                            </div>
+
+                            <label for="tipo_admin" class="l-radio">
+                            <input type="radio" name="tipo" value=1 id="tipo_admin" <?php if($consulta[6] == 1) echo "checked"; ?>>
+                                <span>Administrador</span>
+                            </label>
+
+                            <label for="tipo_aux" class="l-radio">
+                            <input type="radio" name="tipo" value=5 id="tipo_aux" <?php if($consulta[6] == 5) echo "checked"; ?>>
+                                <span>Auxiliar</span>
+                            </label>
+
                         </div>
                         <div class="input-container">
                             <h3 for="username">Usuario:</h3>
