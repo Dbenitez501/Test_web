@@ -53,7 +53,7 @@
                             <input type="text" name="numero_emp" id="numero_emp" placeholder="1234567 (7 Dígitos)" required pattern="[0-9]{7}" title="Sólo se aceptan dígitos (7 Dígitos necesarios)">
                         </div>
                         <div class="input-container">
-                            <h3 for="email">Email:</h3>
+                            <h3 for="email">Correo:</h3>
                             <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required title="Correo invalido. Ejemplo: ejemplo@gmail.com">
                         </div>
                         <div class="input-container">

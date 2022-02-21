@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="input-container">
-                            <h3 for="email">Email:</h3>
+                            <h3 for="email">Correo:</h3>
                             <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required title="Correo invalido. Ejemplo: ejemplo@gmail.com">
                         </div>
 

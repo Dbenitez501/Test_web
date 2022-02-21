@@ -89,7 +89,7 @@ $virtual = new Virtual();
                 }
                 ?></h2>
             </h1>
-            <h3 class=sol-p>
+            <h3 class="sol-p">
                 Estas son las conferencias disponibles
             </h3>
             <br>    

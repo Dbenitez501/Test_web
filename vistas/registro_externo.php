@@ -49,7 +49,7 @@
                             <input type="text" name="nombre" id="nombre" placeholder="Nombre(s) y Apellido(s)" required pattern="^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Sólo se aceptan letras">
                         </div>
                         <div class="input-container">
-                            <h3 for="email">Email:</h3>
+                            <h3 for="email">Correo:</h3>
                             <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required title="Correo invalido. Ejemplo: ejemplo@gmail.com">
                         </div>
                         <div class="input-container">

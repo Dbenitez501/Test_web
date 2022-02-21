@@ -245,7 +245,7 @@ h3{
 
 
 
-.soluciones{
+.soluciones {
     width: 85%;
     margin: auto;
     text-align: -webkit-center;
@@ -591,14 +591,14 @@ footer h5 span{
 }
 
 /*AREA DE INICIO DE SESION*/
-.inicio_sesion{
-    width: 80%;
+.inicio-sesion{
+    width: 100%;
     margin: auto;
-    padding-top: 80px;
-    padding-bottom: 50px;
+    text-align: -webkit-center;
 }
 
 .row-sesion{
+    max-width: 1600px;
     justify-content: center;
     margin-bottom: 3%;
 }
@@ -727,7 +727,8 @@ footer h5 span{
 
 /*AREA DE REGISTRO USUARIOS*/
 .registro-usuario{
-    width: 90%;
+    width: 100%;
+    max-width: 2000px;
     margin: auto;
     padding-bottom: 50px;
 }
