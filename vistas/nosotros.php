@@ -33,8 +33,9 @@ if(isset($_SESSION['user'])) {
 
     </head>
     <body>
-
+  
         <section class="sub-header">
+           <!-- <nav class="contenedor_nav"> --> 
             <nav>
                 <a href="../index.php"><img src="../img/logo_fime.png"></a>
                 <div class="nav-links" id="navLinks">

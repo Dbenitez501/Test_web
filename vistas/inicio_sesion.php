@@ -16,6 +16,7 @@
     <body>
 
         <section class="sub-header">
+            <!-- <nav class="contenedor_nav"> --> 
             <nav>
                 <a href="index.php" class="logo-header"><img src="img/logo_fime.png"></a>
                 <div class="nav-links" id="navLinks">
