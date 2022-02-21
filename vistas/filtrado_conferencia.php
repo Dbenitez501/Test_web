@@ -94,7 +94,7 @@ $user = new User();
                     if(tipo === "p") {
                         id = $('#conf').val();
                         if(tipo && id) {
-                            window.location = 'tabla_filtrado_conferencias.php?idP=' + id;
+                            window.location = 'tabla_filtrado_conferencias.php?href=filtrado_conferencia.php&idP='+id;
                         } else {
                             swal({
                             title: "Completar datos",
@@ -106,7 +106,7 @@ $user = new User();
                     } else {
                         id = $('#conf').val();
                         if(tipo && id) {
-                            window.location = 'tabla_filtrado_conferencias.php?idV=' + id;
+                            window.location = 'tabla_filtrado_conferencias.php?href=filtrado_conferencia.php&idV=' + id;
                         } else {
                             swal({
                             title: "Completar datos",
@@ -118,9 +118,6 @@ $user = new User();
                 });
             });
         </script>
-
-
-
 
     </head>
     <body>
@@ -204,41 +201,6 @@ $user = new User();
             }
             function ocultarMenu(){
                 navLinks.style.right = "-210px";
-            }
-            function preguntar(id) {
-                swal({
-                    title: "Confirmación",
-                    text: "¿Seguro que quieres eliminar la conferencia?", 
-                    icon: "warning",
-                    dangerMode: true,
-                    buttons: {
-                        cancel: {
-                            text: "Cancelar",
-                            value: "no",
-                            visible: true,
-                        },
-                        confirm: {
-                            text: "Eliminar",
-                            value: id,
-                        }
-                    },
-                }).then((value)  => {
-                    switch (value) {
-                        case "no":
-                            swal.close();
-                            break;
-                        case id:
-                            window.location.href = "conferenciasP.php?del="+id;
-                            break;
-                        default:
-                            swal("No se eliminó");
-                    }
-                });
-
-
-                // if(confirm('¿Seguro que quieres eliminar?')) {
-                // window.location.href = "conferenciasP.php?del="+id;
-                // }
             }
         </script>
 

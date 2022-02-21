@@ -133,10 +133,13 @@ $user = new User();
                         <td data-label="Tipo"><?php echo $tipo ?></td>
                         <td>
                             <?php
+                            $host= $_SERVER["HTTP_HOST"];
+                            $url= $_SERVER["REQUEST_URI"];
+                            $pag = "http://" . $host . $url;
                              if($tipo === "Presencial") {
-                                 echo '<a href="tabla_filtrado_conferencias.php?idP=' . $id . '"><input type="submit" value="Registros" class="boton_nuevo"></a>';
+                                 echo '<a href="tabla_filtrado_conferencias.php?href_fecha='.$pag.'&idP=' . $id . '"><input type="submit" value="Registros" class="boton_nuevo"></a>';
                              } else {
-                                echo '<a href="tabla_filtrado_conferencias.php?idV=' . $id . '"><input type="submit" value="Registros" class="boton_nuevo"></a>';
+                                echo '<a href="tabla_filtrado_conferencias.php?href_fecha='.$pag.'&idV=' . $id . '"><input type="submit" value="Registros" class="boton_nuevo"></a>';
                              }
                             ?>
                             

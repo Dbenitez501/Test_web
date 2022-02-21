@@ -174,10 +174,27 @@ $user = new User();
                     </tbody>         
                 </table>               
                 </div>
-                <!--  Enlace mal diseñado para esta seccion, debido al filtrado por fechas
-                <div class="boton_nuevo_conferencia_p">
-                <a href="filtrado_conferencia.php"><input type="submit" value="Regresar" class="boton_regresar"></a>
-                </div>-->
+                <!-- Btn para regresar -->
+                <div class="div_regresar">
+                
+                <a href="
+                <?php 
+                /*Si cuenta con un valor de href (que proviene de filtrado_conferencias.php) 
+                entonces lo direccionara a filtrado_conferencias.php */
+                if(isset($_GET["href"])){
+                    echo $_GET["href"];
+                }else{
+                /*De no contar con href, entonces quiere decir que probiene de tabla_filtrado_fechas.php, por lo que
+                se crea una variable llamada $url la cual va a incluir la url de la tabla_filtrado_fechas.php
+                Se tuvo que concatenar href_fechas mas aparte &fecha_fin=".$_GET["fecha_fin"] ya que href_fecha no contiene todo
+                lo necesario para la url*/
+                $url = $_GET["href_fecha"]."&fecha_fin=".$_GET["fecha_fin"];
+                echo $url;
+                }
+                ?>
+                "><input type="submit" value="Regresar" class="boton_regresar"></a>
+                </div>
+                
                 </div>
         </div>
 
