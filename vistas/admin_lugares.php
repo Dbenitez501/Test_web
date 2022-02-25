@@ -106,7 +106,7 @@ $user = new User();
                             <th>Nombre</th>
                             <th>Ubicación</th>
                             <th>Capacidad Máxima</th>
-                            <th>Descripción</th>
+                            <th>Características</th>
                             <th>Estado</th>
                             <th></th>
                         </tr>

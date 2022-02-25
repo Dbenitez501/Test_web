@@ -88,8 +88,8 @@ $user = new User();
                             <input type="text" name="ubicacion" id="ubicacion" value="<?php echo $consulta[1];?>" placeholder="(Edificio 2,CIDET, etc..)" required>
                         </div>
                         <div class="input-container input-txtarea-cont">
-                            <h3 for="desc">Descripción:</h3>
-                            <textarea class="input-textarea" type="text" name="desc" id="desc" " placeholder="descripción" required><?php echo $consulta[3];?></textarea>
+                            <h3 for="desc">Características:</h3>
+                            <textarea class="input-textarea" type="text" name="desc" id="desc"  placeholder="Cuenta con pantallas, proyector, escenario, climatizado, etc.." required><?php echo $consulta[3];?></textarea>
                         </div>
                         <div class="input-container">
                             <h3 for="cap_max">Capacidad Máxima:</h3>
