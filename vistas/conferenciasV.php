@@ -113,7 +113,7 @@ $user = new User();
                             <th>Hora</th>
                             <th>Plataforma</th>
                             <th>Código Plataforma</th>
-                            <th>Capacidad Máxima</th>
+                            <th>Capacidad</th>
                             <th>Asistencia</th>
                             <th>Estado</th>
                             <th></th>
@@ -137,7 +137,7 @@ $user = new User();
                         <td data-label="Hora"><?php echo $data["hora_inicio"];?></td>
                         <td data-label="Plataforma"><?php echo $data["plataforma"];?></td>
                         <td data-label="Código Plataforma"><?php echo $data['codigo_plat'];?></td>
-                        <td data-label="Capacidad Máxima"><?php echo $data['cap_max'];?></td>
+                        <td data-label="Capacidad"><?php echo 'Actual: '.$data['cap_actual']?><br><?php echo 'Máxima: '.$data['cap_max']?></td>
                         <td data-label="Asistencia"><?php echo $data['codigo_asistencia'];?></td>
                         <td data-label="Estado"><?php echo $virtual->getEstado($data['estado']);?></td>
                         <td data-label="Botones"><a href="mod_conf_v.php?id=<?php echo $id?>"><input type="submit" value="Modificar" class="boton_mod"></a>

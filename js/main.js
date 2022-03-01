@@ -28,7 +28,7 @@ $(document).ready(function () {
             searchPanes: {
                 show: true
             },
-            targets: [6, 8]
+            targets: [6, 9]
         }
         ],
 

@@ -67,6 +67,25 @@ class Presencial extends DB
         }
     }
 
+    public function getEstadoP($id)
+    {
+        $query = $this->connect()->prepare('SELECT presencial.estado FROM presencial WHERE presencial.id_presencial = :id');
+        $query->execute(['id' => $id]);
+        if($query->rowCount()) {
+            while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
+            $estado = $data['estado'];
+            }
+        }
+        
+        if($estado == 1) {
+            $est = "Activado";
+            return $est;
+        } else {
+            $est = "Desactivado";
+            return $est;
+        }
+    }
+
     public function getCodigoConf($id)
     {
         $consulta = "SELECT presencial.codigo_asistencia FROM presencial INNER JOIN registros ON presencial.id_presencial=registros.id_presencial WHERE id_registro=:id";

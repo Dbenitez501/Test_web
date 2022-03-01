@@ -119,6 +119,7 @@ $user = new User();
                             <th>Fecha</th>
                             <th>Hora</th>
                             <th>Lugar</th>
+                            <th>Capacidad</th>
                             <th>Asistencia</th>
                             <th>Estado</th>
                             <th></th>
@@ -126,7 +127,7 @@ $user = new User();
                     </thead>
                     <tbody>
                     <?php
-                    $query = $db->connect()->prepare("SELECT * FROM presencial");
+                    $query = $db->connect()->prepare("SELECT * FROM presencial INNER JOIN lugar_expo on presencial.id_lugar = lugar_expo.id_lugar");
                     $query->execute();
 
                     if($query->rowCount()) {
@@ -148,8 +149,9 @@ $user = new User();
                                 echo $pre->getUbicacionTabla($id) . ", " . $pre->getNombreLugarTabla($id);
                             }
                          ?></td>
+                         <td data-label="Capacidad"><?php echo 'Actual: '.$data['capacidad_actual']?><br><?php echo 'Máxima: '.$data['capacidad_max']?></td>
                         <td data-label="Asistencia"><?php echo $data["codigo_asistencia"];?></td>
-                        <td data-label="Estado"><?php echo $pre->getEstado($data['estado']);?></td>
+                        <td data-label="Estado"><?php echo $pre->getEstadoP($id);?></td>
                         <td data-label="Botones"><a href='mod_conf_p.php?id=<?php echo $id?>'><input type="submit" value="Modificar" class="boton_mod"></a>
                         <a href='#' onclick="preguntar(<?php echo $id?>)"><input type="submit" value="Eliminar" id="btnEliminar" class="boton_elim"></a></td>
                     </tr>
