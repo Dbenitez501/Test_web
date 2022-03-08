@@ -19,10 +19,15 @@ if(isset($_SESSION['user'])) {
 
 //PARA ELIMINAR REGISTRO
 if(isset($_GET['delV'])) {
+  //para obtener la fecha actual
+  date_default_timezone_set("America/Mexico_City");
+  $fecha_actual = date("Y-m-d");
+
   $id_del = $_GET['delV'];
 
-  $procedure = $db->connect()->prepare('CALL restar_capacidad_virtual(?)');
+  $procedure = $db->connect()->prepare('CALL restar_capacidad_virtual(?,?)');
   $procedure->bindParam(1, $id_del, PDO::PARAM_INT);
+  $procedure->bindParam(2, $fecha_actual, PDO::PARAM_STR);
   $procedure->execute();
 
   $queryDel = $db->connect()->prepare("DELETE FROM registros WHERE id_registro = :id_del");
@@ -31,10 +36,15 @@ if(isset($_GET['delV'])) {
 }
 
 if(isset($_GET['delP'])) {
+  //para obtener la fecha actual
+  date_default_timezone_set("America/Mexico_City");
+  $fecha_actual = date("Y-m-d");
+
   $id_del = $_GET['delP'];
 
-  $procedure = $db->connect()->prepare('CALL restar_capacidad_presencial(?)');
+  $procedure = $db->connect()->prepare('CALL restar_capacidad_presencial(?,?)');
   $procedure->bindParam(1, $id_del, PDO::PARAM_INT);
+  $procedure->bindParam(2, $fecha_actual, PDO::PARAM_STR);
   $procedure->execute();
 
   $queryDel = $db->connect()->prepare("DELETE FROM registros WHERE id_registro = :id_del");
@@ -180,7 +190,7 @@ if(isset($_GET['delP'])) {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Título</th>
+                        <th>Título </th>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Plataforma</th>
