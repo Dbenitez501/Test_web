@@ -8,6 +8,15 @@ $userSession = new UserSession();
 $user = new User();
 $db = new DB();
 
+//Primero mandamos a llamar al store procedure para desactivar las conferencias ya vencidas
+//mandamos la fecha actual como paramentro
+
+date_default_timezone_set("America/Mexico_City");
+$fecha_actual = date("Y-m-d");
+$procedure = $db->connect()->prepare('CALL desactivar_conferencias_expiradas(?)');
+$procedure->bindParam(1, $fecha_actual, PDO::PARAM_STR);
+$procedure->execute();
+
 if(isset($_SESSION['user']))
 {
     //"Hay sesión existente";
