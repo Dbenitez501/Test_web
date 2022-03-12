@@ -120,10 +120,10 @@ if(isset($_SESSION['user'])) {
                 </div>
                 <div class="sobre-col">
                     <h1>Desarrolladores de la página</h1>
+                    <p><strong>Full-stack:</strong> Abiam Alberto Escobedo Ruiz</p>
+                    <p><i class="fas fa-envelope"></i>abiamalberto.19@gmail.com</p>
                     <p><strong>Back-end: </strong> Diego Benítez Reyna</p>
                     <p><i class="fas fa-envelope"></i>diegobenitez@live.com.mx</p>
-                    <p><strong>Front-end:</strong> Abiam Alberto Escobedo Ruiz</p>
-                    <p><i class="fas fa-envelope"></i>abiamalberto.19@gmail.com</p>
                 </div>
             </div>
         </section>        
