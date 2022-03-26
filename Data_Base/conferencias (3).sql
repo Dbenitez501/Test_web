@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2022 a las 02:49:41
+-- Tiempo de generación: 26-03-2022 a las 03:59:58
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.1
 
@@ -59,12 +59,26 @@ UPDATE virtual SET estado = 0 WHERE id_virtual = id_v;
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `restar_capacidad_presencial` (IN `id_r` INT)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `desactivar_conferencias_expiradas` (IN `fecha_actual` DATE)  BEGIN
+
+UPDATE presencial SET estado = 0 WHERE fecha_inicio < fecha_actual;
+
+UPDATE virtual SET estado = 0 WHERE fecha_inicio < fecha_actual;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `restar_capacidad_presencial` (IN `id_r` INT, IN `fecha_actual` DATE, IN `hora_actual` VARCHAR(10))  BEGIN
 DECLARE cap_act INT;
 DECLARE cap_maxima INT;
 DECLARE id_p INT;
+DECLARE fecha_conferencia DATE;
+DECLARE hora_conferencia VARCHAR(10);
 
 SELECT id_presencial FROM registros WHERE id_registro = id_r INTO id_p;
+
+SELECT fecha_inicio FROM presencial WHERE id_presencial = id_p INTO fecha_conferencia;
+
+SELECT hora_inicio FROM presencial WHERE id_presencial = id_p INTO hora_conferencia;
 
 SELECT capacidad_actual FROM presencial WHERE id_presencial = id_p INTO cap_act;
 
@@ -73,17 +87,40 @@ SELECT lugar_expo.capacidad_max FROM lugar_expo JOIN presencial ON presencial.id
 SET cap_act = cap_act - 1;
 UPDATE presencial SET capacidad_actual = cap_act WHERE id_presencial = id_p;
 
-/*IF cap_act < cap_maxima THEN
-UPDATE presencial SET estado = 1 WHERE id_presencial = id_p;
-END IF;*/
+/*Activa la conferencia si aun hay cupos y si aun no pasa la fecha de exposicion*/
+IF ((cap_act < cap_maxima) AND (fecha_conferencia >= fecha_actual))
+THEN
+	UPDATE presencial SET estado = 1 WHERE id_presencial = 		id_p;
+    
+    IF ((fecha_conferencia = fecha_actual) AND (hora_conferencia  > hora_actual))
+    THEN
+	UPDATE presencial SET estado = 1 WHERE id_presencial = 		id_p;
+	END IF;
+END IF;
+
+/*Desactiva la conferencia si ya esta expirada*/
+IF (fecha_conferencia <= fecha_actual)
+	THEN
+    IF (hora_conferencia  <= hora_actual)
+    THEN
+    UPDATE presencial SET estado = 0 WHERE id_presencial = 		id_p;
+    END IF;
+END IF;
+
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `restar_capacidad_virtual` (IN `id_r` INT)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `restar_capacidad_virtual` (IN `id_r` INT, IN `fecha_actual` DATE, IN `hora_actual` VARCHAR(10))  BEGIN
 DECLARE cap_act INT;
 DECLARE cap_maxima INT;
 DECLARE id_v INT;
+DECLARE fecha_conferencia DATE;
+DECLARE hora_conferencia VARCHAR(10);
 
 SELECT id_virtual FROM registros WHERE id_registro = id_r INTO id_v;
+
+SELECT fecha_inicio FROM virtual WHERE id_virtual = id_v INTO fecha_conferencia;
+
+SELECT hora_inicio FROM virtual WHERE id_virtual = id_v INTO hora_conferencia;
 
 SELECT cap_actual FROM virtual WHERE id_virtual = id_v INTO cap_act;
 
@@ -92,9 +129,26 @@ SELECT cap_max FROM virtual WHERE id_virtual = id_v INTO cap_maxima;
 SET cap_act = cap_act - 1;
 UPDATE virtual SET cap_actual = cap_act WHERE id_virtual = id_v;
 
-/*IF cap_act < cap_maxima THEN
-UPDATE virtual SET estado = 1 WHERE id_virtual = id_v;
-END IF;*/
+/*Activa la conferencia si aun hay cupos y si aun no pasa la fecha de exposicion*/
+IF ((cap_act < cap_maxima) AND (fecha_conferencia >= fecha_actual))
+THEN
+	UPDATE virtual SET estado = 1 WHERE id_virtual = id_v;
+    
+    IF ((fecha_conferencia = fecha_actual) AND (hora_conferencia  > hora_actual))
+    THEN
+	UPDATE virtual SET estado = 1 WHERE id_virtual = id_v;
+	END IF;
+END IF;
+
+/*Desactiva la conferencia si ya esta expirada*/
+IF (fecha_conferencia <= fecha_actual)
+	THEN
+    IF (hora_conferencia  <= hora_actual)
+    THEN
+    UPDATE virtual SET estado = 0 WHERE id_virtual = id_v;
+    END IF;
+END IF;
+
 END$$
 
 DELIMITER ;
@@ -163,8 +217,8 @@ CREATE TABLE `presencial` (
 --
 
 INSERT INTO `presencial` (`id_presencial`, `titulo`, `descripcion`, `expositor`, `fecha_inicio`, `hora_inicio`, `capacidad_actual`, `estado`, `id_lugar`, `codigo_asistencia`, `tipo`, `imagen`, `hora_creacion`) VALUES
-(10, 'Conferencia FASTENAL Prueba', 'Conferencia llevada a cabo por la empresa FASTENAL', 'Expositor 1', '2021-06-30', '11:00', 1, 1, 6, 'fastenal432', 'Presencial', 0x3738323136372e6a7067, '2022-02-14 20:01:44'),
-(22, 'Conferencia de Cemex', 'Aquí va la descripción de la conferencia ', 'Ing. Cemex', '2022-02-03', '17:30', 2, 1, 6, '822189', 'Presencial', 0x3834323432362e6a7067, '2022-02-14 20:01:51');
+(10, 'Conferencia FASTENAL Prueba', 'Conferencia llevada a cabo por la empresa FASTENAL', 'Expositor 1', '2022-03-31', '20:00', 2, 1, 6, 'fastenal432', 'Presencial', 0x3738323136372e6a7067, '2022-02-28 20:34:02'),
+(22, 'Conferencia de Cemex', 'Aquí va la descripción de la conferencia ', 'Ing. Cemex', '2022-03-30', '10:30', 1, 1, 6, '822189', 'Presencial', 0x3834323432362e6a7067, '2022-02-28 20:34:15');
 
 -- --------------------------------------------------------
 
@@ -186,14 +240,15 @@ CREATE TABLE `registros` (
 --
 
 INSERT INTO `registros` (`id_registro`, `id_presencial`, `id_virtual`, `id_usuario`, `asistencia`, `comentario`) VALUES
-(71, 22, NULL, 29, 0, NULL),
 (72, NULL, 4, 47, 0, NULL),
 (73, NULL, 4, 58, 0, NULL),
 (74, NULL, 4, 59, 0, NULL),
 (76, 22, NULL, 59, 0, NULL),
 (77, NULL, 4, 44, 0, NULL),
-(78, NULL, 9, 29, 0, NULL),
-(79, 10, NULL, 58, 0, NULL);
+(79, 10, NULL, 58, 0, NULL),
+(140, NULL, 9, 29, 0, NULL),
+(148, 22, NULL, 29, 0, NULL),
+(164, 10, NULL, 64, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -268,7 +323,8 @@ INSERT INTO `usuarios` (`id_usuario`, `username`, `contra`, `nombre`, `carrera`,
 (60, 'PruebaA122', 'SE1NbTYyTnBtTkFaeUlhOWFUa2twQT09', 'Abiam Alberto ', NULL, '1219010', 'abaim19ha24lo4@hotmail.com', 8121137873, 'Masculino', 'Bangladesh', 2),
 (61, 'auxiliar1', 'SE1NbTYyTnBtTkFaeUlhOWFUa2twQT09', 'Auxiliar Abiam', NULL, NULL, 'abaim19dddddddhalo4@hotmail.com', 8121137873, 'Masculino', '', 5),
 (62, 'auxiliar9', 'SE1NbTYyTnBtTkFaeUlhOWFUa2twQT09', 'Auxiliar Abiam', NULL, NULL, 'abaim19ddddhalo4@hotmail.com', 8121137873, 'Masculino', '', 5),
-(63, 'ojsmlkaokl', 'V3F6WWN6dXk4SGRuT0VINDRhUnh0QT09', 'ank', NULL, NULL, 'jahir.1a.gzz@gmail.com', 8121137873, 'Femenino', '', 1);
+(63, 'ojsmlkaokl', 'V3F6WWN6dXk4SGRuT0VINDRhUnh0QT09', 'ank', NULL, NULL, 'jahir.1a.gzz@gmail.com', 8121137873, 'Femenino', '', 1),
+(64, 'Ejemplo_1', 'RmpIcFNLTUErbGtJQVN0bUJQYkRJUT09', 'Nombres Apellidop Apellidom', NULL, '1234567', 'ejemplo_1@hotmail.com', 8121534873, 'Masculino', 'México', 2);
 
 -- --------------------------------------------------------
 
@@ -299,9 +355,9 @@ CREATE TABLE `virtual` (
 --
 
 INSERT INTO `virtual` (`id_virtual`, `titulo`, `descripcion`, `expositor`, `fecha_inicio`, `hora_inicio`, `plataforma`, `codigo_plat`, `estado`, `cap_actual`, `cap_max`, `codigo_asistencia`, `tipo`, `imagen`, `hora_creacion`) VALUES
-(4, 'Programas Formativos', 'Sesión informativa de los programas formativos en Ternium', 'Expositor 2', '2021-06-25', '14:00', 'MsTeams', 'j6fn564', 1, 4, 32, 'ternium123', 'Virtual', 0x39363736372e6a7067, '2022-02-14 19:47:14'),
-(9, 'Impacto de empresas de consumo masivo', 'Impacto de empresas de consumo masivo en generación de riqueza, empleo y nuevas tecnologías en países emergentes', 'ING. JOSE LUIS PEREZ RENTERIA', '2021-06-29', '17:00', 'MsTeams', 'a8gf345', 1, 1, 50, 'arca345', 'Virtual', 0x3839323839342e706e67, '2021-07-02 21:04:45'),
-(15, 'Prueba Activación 1', 'Prueba de activacion de la conferencia en tiempo aun disponible', 'Abiam', '2022-03-01', '07:30', 'Teams', 'x2901ao', 1, 0, 1, '123', 'Virtual', 0x3838313135332e706e67, '2022-02-28 19:48:54');
+(4, 'Programas Formativos', 'Sesión informativa de los programas formativos en Ternium', 'Expositor 2', '2022-04-14', '14:00', 'MsTeams', 'j6fn564', 1, 4, 32, 'ternium123', 'Virtual', 0x39363736372e6a7067, '2022-02-14 19:47:14'),
+(9, 'Impacto de empresas de consumo masivo', 'Impacto de empresas de consumo masivo en generación de riqueza, empleo y nuevas tecnologías en países emergentes', 'ING. JOSE LUIS PEREZ RENTERIA', '2022-03-26', '20:00', 'MsTeams', 'a8gf345', 0, 1, 50, 'arca345', 'Virtual', 0x3839323839342e706e67, '2021-07-02 21:04:45'),
+(15, 'Prueba Activación 1', 'Prueba de activacion de la conferencia en tiempo aun disponible', 'Abiam', '2022-10-01', '20:00', 'Teams', 'x2901ao', 1, 0, 1, '123', 'Virtual', 0x3838313135332e706e67, '2022-02-28 19:48:54');
 
 -- --------------------------------------------------------
 
@@ -377,7 +433,7 @@ ALTER TABLE `presencial`
 -- AUTO_INCREMENT de la tabla `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador único del registro', AUTO_INCREMENT=86;
+  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador único del registro', AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
@@ -389,7 +445,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador único del usuario', AUTO_INCREMENT=64;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador único del usuario', AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `virtual`
